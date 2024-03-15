@@ -1,5 +1,5 @@
-# ie0217
-Este repositorio será utilizado para el curso IE0217 - Estructuras Abstractas de Datos y Algoritmos para Ingeniería y es utilizado para repasar commandos de git, verificar la instalación correcta de GCC y Visual Studio Code, ademas aplicar lo visto en clases de lenguaje de markdown.
+# Previo 1
+Este previo consiste en un repaso del uso de git y también practicar el uso de sintaxis de markdown utilizado en los readme. Si desea obtener más información de markdown se puede hacer en el siguiente enlace: https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 ## Comandos de git usados
 Solamente se ejecutan commandos básicos de git para repasar tales como:

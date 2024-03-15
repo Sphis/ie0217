@@ -41,8 +41,8 @@ int ejemplo2() {
 }
 
 int main(int argc, char* argv[]) {
-    //ejemplo1(); // Ejecutar primer ejemplo
-    //ejemplo2(); // Ejecutar el segundo ejemplo
+    ejemplo1(); // Ejecutar primer ejemplo
+    ejemplo2(); // Ejecutar el segundo ejemplo
 
     ///////////////////// Ejemplo 3 empezando en 1:06:06 /////////////////////
     // argc es el contador de argumentos y argv[] es el vector de argumentos
