@@ -16,3 +16,6 @@ int *ptr;  // Puntero de un int
 int num = 10;
 ptr = &num; // Inicializar 
 ```
+
+### Ejemplo 4
+Cambio de valores utilizando punteros.
