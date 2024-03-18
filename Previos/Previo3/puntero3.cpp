@@ -12,7 +12,7 @@ int main() {
         cout << "&array[" << i << "] = " << &array[i] << endl;
     }
 
-    // ptr = &array[0]
+    // pointer = &array[0]
     pointer = array;
     cout << "\n Displaying address using pointers: " << endl;
 

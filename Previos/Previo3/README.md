@@ -10,7 +10,7 @@ En este ejemplo se estudian enum (corto para enumeraciones en inglés), esto es 
 >g++ -o enum.exe .\enum.cpp
 
 ### Ejemplo 3
-Este ejemplo consiste en el uso de punteros para su comprensión. Se realiza una demostración donde se guarda un valor y se imprime el valor guardado, la dirrección del valor, la dirrección del puntero y el contenido del puntero. Un puntero es nada mas que un tipo de dato (al igual que int, char, etc.) que guarda dirrecciones de memoria. Algunas cosas importantes por recordar, el símbolo `&` se utiliza como "la dirección de memoria de la variable", el símbolo `*` se usa para declarar un puntero seguido del tipo de variable que van a apuntar, ejemplo
+Este ejemplo consiste en el uso de punteros para su comprensión. Se realiza una demostración donde se guarda un valor y se imprime el valor guardado, la dirrección del valor, la dirrección del puntero y el contenido del puntero. Un puntero es nada mas que un tipo de dato (al igual que int, char, etc.) que guarda dirrecciones de memoria. Algunas cosas importantes por recordar, el símbolo `&` se utiliza como "la dirección de memoria de la variable", el símbolo `*` (el contenido de) se usa para declarar un puntero seguido del tipo de variable que van a apuntar, ejemplo
 ```
 int *ptr;  // Puntero de un int
 int num = 10;
@@ -21,4 +21,7 @@ ptr = &num; // Inicializar
 Cambio de valores utilizando punteros.
 
 ### Ejemplo 5
-Segundo ejemplo relacionado a punteros.
+Segundo ejemplo relacionado a punteros demostrando que se puede mostrar la dirrección de un arreglo usando punteros o utilizando el operador de `&`.
+
+### Ejemplo 6
+Este sexto ejemplo consiste en que se puede hacer uso de un puntero que apunta hacia otro puntero, aunque no es algo recomendado por su manejabilidad.
