@@ -1,12 +1,12 @@
 # Previo3
-Este archivo incluye el uso de funciones y es basado en el video C++ Parte 2.
+Este archivo incluye el uso de funciones y es basado en el video C++ Parte 2. En las secciones se adjunta el código para creear el archivo ejecutable al ejemplo correspondiente, después de eso solo se debe correr el archivo creado.
 
 ### Ejemplo 1
 Para este ejemplo se crea una función propia `sum` y se llama desde otro archivo (en este caso desde _Previo3.cpp_) logrando así un código más ordenado, para compilar recuerde pasar los archivos correspondientes para que compile de forma correcta, puede usar:
 >g++ -o sum.exe ./Previo3.cpp ./sum.cpp
 
 ### Ejemplo 2
-En este ejemplo se estudian enum (corto para enumeraciones en inglés), esto es un tipo de dato creado por el usuario en el que se asocia una variable con un valor. Es útil cuando se quiere usar una cantidad determinada de opciones que se relacionan entre sí. Para los mismos si no se les agrega un valor entero, automáticamente se gles asigna el valor del dato con su índice correspondiente. Para compilar:
+En este ejemplo se estudian enum (corto para enumeraciones en inglés), esto es un tipo de dato creado por el usuario en el que se asocia una variable con un valor. Es útil cuando se quiere usar una cantidad determinada de opciones que se relacionan entre sí. Para los mismos si no se les agrega un valor entero, automáticamente se le asigna el valor del dato con su índice correspondiente. Para compilar:
 >g++ -o enum.exe .\enum.cpp
 
 ### Ejemplo 3
@@ -17,11 +17,17 @@ int num = 10;
 ptr = &num; // Inicializar 
 ```
 
+Para compilar:
+>g++ -o enum.exe .\punteros.cpp
+
 ### Ejemplo 4
-Cambio de valores utilizando punteros.
+Cambio de valores utilizando punteros. Para compilar:
+>g++ -o enum.exe .\puntero2.cpp
 
 ### Ejemplo 5
-Segundo ejemplo relacionado a punteros demostrando que se puede mostrar la dirrección de un arreglo usando punteros o utilizando el operador de `&`.
+Segundo ejemplo relacionado a punteros demostrando que se puede mostrar la dirrección de un arreglo usando punteros o utilizando el operador de `&`. Para compilar:
+>g++ -o enum.exe .\puntero3.cpp
 
 ### Ejemplo 6
-Este sexto ejemplo consiste en que se puede hacer uso de un puntero que apunta hacia otro puntero, aunque no es algo recomendado por su manejabilidad.
+Este sexto ejemplo consiste en que se puede hacer uso de un puntero que apunta hacia otro puntero, aunque no es algo recomendado por su manejabilidad. Para compilar:
+>g++ -o enum.exe .\puntero4.cpp
