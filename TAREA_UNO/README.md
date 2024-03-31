@@ -1,3 +1,5 @@
+# Intrucciones de ejecución
+
 # Parte Teórica
 **1. ¿Cuál es la principal diferencia entre C y C++?**
 
