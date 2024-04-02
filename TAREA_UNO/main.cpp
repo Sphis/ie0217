@@ -37,7 +37,7 @@ int main() {
                 agregarContacto(listaPalabras, numContactos);
                 break;
             case JUGAR:
-                mostrarContactos(palabras, numContactos);
+                mostrarPalabras(palabras, numContactos);
                 break;
             case AGREGAR:
                 buscarContacto(listaPalabras, numContactos);
