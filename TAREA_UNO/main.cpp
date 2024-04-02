@@ -1,5 +1,6 @@
 #include <iostream>
-#include "Contacto.hpp"
+#include <vector>
+#include "Partida.hpp"
 #include "Funciones.hpp"
 
 using namespace std;
@@ -15,11 +16,11 @@ enum Operaciones {
 };
 
 int main() {
-    std::string palabras[MAX_PALABRAS] = {"curso", "computadoras", "hola", "verde", "perro", "gato"}; // Palabras iniciales
+    std::vector<std::string> palabras = {"curso", "computadoras", "hola", "verde", "perro", "gato"}; // Palabras iniciales
 
-    Contacto listaPalabras[MAX_PALABRAS];
+    Partida listaPalabras[MAX_PALABRAS];
 
-    int numContactos = 6; // Cantidad de palabras iniciales
+    int numPalabras = 6; // Cantidad de palabras iniciales
     int opcion;
 
     do {
@@ -33,18 +34,17 @@ int main() {
 
         switch(opcion) {
             case DIFICULTAD:
-                //std::cout << "Primera palabra: " << palabras[1];
-                agregarContacto(listaPalabras, numContactos);
+                //buscarContacto(listaPalabras, numPalabras);
                 break;
             case JUGAR:
-                mostrarPalabras(palabras, numContactos);
+                // Opcion para jugar
                 break;
             case AGREGAR:
-                buscarContacto(listaPalabras, numContactos);
+                numPalabras++;
+                agregarPalabra(palabras, numPalabras);
                 break;
             case DICCIONARIO:
-                agregarContacto(listaPalabras, numContactos);
-                std::cout << "Saliendo del programa... \n";
+                mostrarPalabras(palabras, numPalabras);
                 break;
             case SALIR:
                 std::cout << "Saliendo del programa... \n";

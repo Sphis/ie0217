@@ -1,10 +1,11 @@
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP
 
-#include "Contacto.hpp"
+#include "Partida.hpp"
+#include <vector>
 
-void agregarContacto(Contacto listaPalabras[], int &numContactos);
-void mostrarPalabras(const std::string listaPalabras[], int numContactos);
-void buscarContacto(const Contacto listaPalabras[], int numContactos);
+void agregarPalabra(std::vector<std::string>& palabras, int numPalabras);
+void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras);
+void buscarContacto(const Partida listaPalabras[], int numPalabras);
 
 #endif // FUNCIONES_HPP

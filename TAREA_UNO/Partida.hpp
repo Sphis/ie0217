@@ -1,12 +1,12 @@
-#ifndef CONTACTO_HPP
-#define CONTACTO_HPP
+#ifndef PARTIDA_HPP
+#define PARTIDA_HPP
 
 #include <iostream>
 #include <string>
 
-struct Contacto {
+struct Partida {
     std::string nombre;
     std::string telefono;
 };
 
-#endif // CONTACTO_HPP
+#endif // PARTIDA_HPP

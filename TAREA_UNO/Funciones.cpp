@@ -1,28 +1,30 @@
 #include "Funciones.hpp"
+#include <vector>
 
-void agregarContacto(Contacto listaPalabras[], int &numContactos) {
-    Contacto nuevoContacto;
-    std::cout << "Ingrese el nombre del contacto: ";
-    std::cin >> nuevoContacto.nombre;
-    std::cout << "Ingrese el numero de telefono: ";
-    std::cin >> nuevoContacto.telefono;
+void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
+    std::cout << "Ingrese la palabra nueva que desea agregar: ";
+    std::string nuevaPalabra;
 
-    listaPalabras[numContactos++] = nuevoContacto;
-}
-
-void mostrarPalabras(const std::string listaPalabras[], int numContactos) {
-    std::cout << "Diccionario de palabras:\n";
-    for (int i = 0; i < numContactos; ++i) {
-        std::cout << listaPalabras[i] << "\n";
+    std::cin >> nuevaPalabra;
+    palabras.push_back(nuevaPalabra);
+    for (int i = 0; i < numPalabras; ++i) {
+        std::cout << palabras[i] << "\n";
     }
 }
 
-void buscarContacto(const Contacto listaPalabras[], int numContactos) {
+void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) {
+    std::cout << "Diccionario de palabras:\n";
+    for (int i = 0; i < numPalabras; ++i) {
+        std::cout << palabras[i] << "\n";
+    }
+}
+
+void buscarContacto(const Partida listaPalabras[], int numPalabras) {
     std::string nombreBusqueda;
     std::cout << "Ingrese el nombre a buscar: ";
     std::cin >> nombreBusqueda;
     bool encontrado = false;
-    for (int i = 0; i < numContactos; i++) {
+    for (int i = 0; i < numPalabras; i++) {
         if(listaPalabras[i].nombre == nombreBusqueda) {
             std::cout << "Nombre: " << listaPalabras[i].nombre << ", Telefono: " << listaPalabras[i].telefono << "\n";
             encontrado = true;
@@ -31,7 +33,7 @@ void buscarContacto(const Contacto listaPalabras[], int numContactos) {
     }
     if (!encontrado)
     {
-        std::cout << "Contacto no encontrado.\n";
+        std::cout << "Partida no encontrado.\n";
     }
     
 }
