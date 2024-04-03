@@ -38,6 +38,7 @@ int main() {
             case DIFICULTAD:
             {
                 dificultad(juego);
+                std::cout << juego.palabra << std::endl;
                 break;
             }
             case JUGAR:
@@ -45,6 +46,8 @@ int main() {
                 Partida juego = init(0, 5, palabras); // Solo hay 6 palabras incialmente, por eso 0, 5
                 std::cout << juego.palabra << std::endl;
                 adivinar(juego);
+                verificar(juego);
+                return 0; // Se concluye la partida
                 break;
             }
             case AGREGAR:

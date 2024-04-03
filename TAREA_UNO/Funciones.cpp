@@ -62,7 +62,7 @@ Partida init(int min, int max, const std::vector<std::string>& palabras) {
     return juego;
 }
 
-Partida dificultad(Partida juego) {
+Partida dificultad(Partida& juego) {
     std::string dificultad;
     bool opcionValida = false;
 
@@ -95,80 +95,55 @@ Partida dificultad(Partida juego) {
     return juego;
 }
 
-Partida adivinar(Partida juego) {
+Partida adivinar(Partida& juego) {
     int tamanoPalabra = juego.palabra.size();
     char letra;
+    int correctas = 0;
+    bool letraEncontrada = false;
+
+    std::cout << juego.intentosMax;
 
     char* adivinarPtr = &juego.estadoActual[0]; // Puntero para la palabra con guines bajos
     char* originalPtr = &juego.palabra[0]; // Puntero para la palabra original con letras
 
     while (juego.intentosActual < juego.intentosMax) {
-        std::cout << "Ingrese una letra\n";
+        std::cout << "Ingrese una letra:\n";
         std::cin >> letra;
 
         for (int k = 0; k < tamanoPalabra; k++) {
             if (originalPtr[k] == letra) {
                 adivinarPtr[k] = originalPtr[k]; // Reemplazar guion por letra
                 std::cout << "Letra correcta.\n";
-                break;
+                correctas++;
+                letraEncontrada = true;
+                //break;
             } else {
-                if (k == (tamanoPalabra - 1)) {
+                if ((k == (tamanoPalabra - 1)) && (letraEncontrada == false)) {
                     // Solo cuando se haya revisado todas las letras es que puede haber error
                     ++juego.intentosActual; // Caso donde no acierta
                     std::cout << "Letra incorrecta, intente de nuevo.\n";
+                    //letraEncontrada = false;
                 }
             }
-            // std::cout << adivinarPtr[k] << std::endl;
-            // std::cout << originalPtr[k] << std::endl;
         }
+        letraEncontrada = false;
         std::cout << adivinarPtr << std::endl;
+
+        if (correctas == tamanoPalabra) {
+            break; // Ver si ha ganado para no seguir revisando el bucle
+        }
+        
     }
-    
-
-    // while (true) {
-    //     std::cout << "Ingrese una letra\n";
-    //     std::cin >> letra;
-
-    //     for (int k = 0; k < tamanoPalabra; k++) {
-    //         if (*originalPtr == letra) {
-    //             juego.intentosActual++; // Adivina correctamente
-    //             *adivinarPtr = *originalPtr; // Actualizar el guion bajo con la letra
-    //             std::cout << "Correcto" << adivinarPtr << std::endl;
-    //         }
-    //         // Continuar con el siguiente valor
-    //         ++originalPtr;
-    //         ++adivinarPtr;
-    //     }
-    //     std::cout << adivinarPtr << std::endl;
-    // }
+    juego.estadoActual = adivinarPtr; // Guardar estado de la palabra adivinada
 
     return juego;
 }
 
-// Chat gpt reference
-// Partida adivinar(Partida juego) {
-//     int tamanoPalabra = juego.palabra.size();
-//     char letra;
-
-//     char* adivinarPtr = &juego.palabra[0]; // Puntero para la palabra con guines bajos
-//     char* originalPtr = &juego.estadoActual[0]; // Puntero para la palabra original con letras
-
-//     while (1 > 0)
-//     {
-//         std::cout << "Ingrese una letra\n";
-//         std::cin >> letra;
-
-//         for (char& c : juego.palabra) {
-//             if (c == letra) {
-//                 juego.intentosActual++; // Adivina correctamente
-//                 *adivinarPtr = c; // Actualizar el guion bajo con la letra
-//                 std::cout << "Correcto" << std::endl;
-//             }
-//             // Continuar con el siguiente valor
-//             ++adivinarPtr;
-//         }
-//         std::cout << adivinarPtr << std::endl;
-//     }
-
-//     return juego;
-// }
+Partida verificar(Partida juego) {
+    if (juego.intentosActual == juego.intentosMax) {
+        std::cout << "Ha perdido la partida, se han agotado los intentos." << std::endl;
+    } else {
+        std::cout << "Ha ganado la partida, la palabra es: " << juego.palabra << std::endl;
+    }
+    return juego;
+}

@@ -8,7 +8,8 @@ void agregarPalabra(std::vector<std::string>& palabras, int numPalabras);
 void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras);
 //void buscarContacto(const Partida listaPalabras[], int numPalabras);
 Partida init(int min, int max, const std::vector<std::string>& palabras);
-Partida dificultad(Partida juego);
-Partida adivinar(Partida juego);
+Partida dificultad(Partida& juego);
+Partida adivinar(Partida& juego);
+Partida verificar(Partida juego);
 
 #endif // FUNCIONES_HPP
