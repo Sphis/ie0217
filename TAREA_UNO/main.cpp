@@ -34,24 +34,37 @@ int main() {
 
         switch(opcion) {
             case DIFICULTAD:
+            {
                 //buscarContacto(listaPalabras, numPalabras);
                 break;
+            }
             case JUGAR:
-                // Opcion para jugar
+            {
+                const std::string* palabraAleatoria = init(0, 5, palabras); // Escoger una palabra aleatoria
+                std::cout << *palabraAleatoria << endl;
                 break;
+            }
             case AGREGAR:
+            {
                 numPalabras++;
                 agregarPalabra(palabras, numPalabras);
                 break;
+            }
             case DICCIONARIO:
+            {
                 mostrarPalabras(palabras, numPalabras);
                 break;
+            }
             case SALIR:
+            {
                 std::cout << "Saliendo del programa... \n";
                 break;
+            }
             default:
+            {
                 std::cout << "Opcion no valida. Intente de nuevo..\n";
                 break;
+            }
         }
     } while (opcion != SALIR);
 

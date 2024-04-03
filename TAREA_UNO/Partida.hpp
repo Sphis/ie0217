@@ -5,8 +5,10 @@
 #include <string>
 
 struct Partida {
-    std::string nombre;
-    std::string telefono;
+    std::string palabra;
+    int estadoActual;
+    int intentosMax;
+    int intentosActual;
 };
 
 #endif // PARTIDA_HPP
