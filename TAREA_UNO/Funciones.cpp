@@ -2,6 +2,9 @@
 #include <vector>
 #include <random>
 #include <chrono>
+#include <string>
+#include <cctype>
+#include <iostream>
 
 void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
     std::cout << "Ingrese la palabra nueva que desea agregar: ";
@@ -38,7 +41,20 @@ const std::string* init(int min, int max, const std::vector<std::string>& palabr
     // Usar puntero para escoger la palabra
     const std::string* randomWordPtr = &palabras[numeroAleatorio];
 
-    // Devolver el numero generado
+    std::string palabra = *randomWordPtr;
+
+    int tamanoPalabra = palabra.size();
+    //std::cout << tamanoPalabra << std::endl;
+
+    std::string palabraAdivinar = "";
+
+    for (int i = 0; i < tamanoPalabra; i++) {
+        palabraAdivinar.append("_ ");
+    }
+    
+    std::cout << palabraAdivinar << std::endl;
+
+
     return randomWordPtr;
 }
 
