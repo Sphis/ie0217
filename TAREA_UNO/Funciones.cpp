@@ -6,6 +6,7 @@
 #include <cctype>
 #include <iostream>
 
+// Funcion usada para agregar palabras al arreglo de palabras iniciales
 void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
     std::cout << "Ingrese la palabra nueva que desea agregar: ";
     std::string nuevaPalabra;
@@ -17,6 +18,7 @@ void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
     }
 }
 
+// Funcion para mostrar palabras que hay en en arreglo
 void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) {
     std::cout << "Diccionario de palabras:\n";
     for (int i = 0; i < numPalabras; ++i) {
@@ -24,7 +26,9 @@ void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) 
     }
 }
 
-Partida init(int min, int max, const std::vector<std::string>& palabras) {
+// Funcion para inicializar el juego, se encarga de tomar una palabra aleatoria y generar otro dato que es la misma palabra
+// pero con guines bajos
+Partida init(int min, int max, const std::vector<std::string>& palabras, Partida& juego) {
     // Obtener el tiempo actual
     auto tiempoActual = std::chrono::system_clock::now();
     auto duracion = tiempoActual.time_since_epoch();
@@ -44,7 +48,6 @@ Partida init(int min, int max, const std::vector<std::string>& palabras) {
     std::string palabra = *randomWordPtr;
 
     int tamanoPalabra = palabra.size();
-    //std::cout << tamanoPalabra << std::endl;
 
     std::string palabraAdivinar = "";
 
@@ -54,14 +57,13 @@ Partida init(int min, int max, const std::vector<std::string>& palabras) {
     
     std::cout << palabraAdivinar << std::endl;
 
-    Partida juego;
-
     juego.palabra = palabra; // Guardar la palabra en el struct
     juego.estadoActual = palabraAdivinar; // Guardar los guiones bajos en el struct
 
     return juego;
 }
 
+// Funcion usada para modificar la dificultad del juego
 Partida dificultad(Partida& juego) {
     std::string dificultad;
     bool opcionValida = false;
@@ -95,13 +97,13 @@ Partida dificultad(Partida& juego) {
     return juego;
 }
 
+// Funcion encargada de pedirle al usuario que ingrese letras y ver si la letra ingresada coincide con
+// la palabra a adivinar.
 Partida adivinar(Partida& juego) {
     int tamanoPalabra = juego.palabra.size();
     char letra;
     int correctas = 0;
     bool letraEncontrada = false;
-
-    std::cout << juego.intentosMax;
 
     char* adivinarPtr = &juego.estadoActual[0]; // Puntero para la palabra con guines bajos
     char* originalPtr = &juego.palabra[0]; // Puntero para la palabra original con letras
@@ -116,13 +118,11 @@ Partida adivinar(Partida& juego) {
                 std::cout << "Letra correcta.\n";
                 correctas++;
                 letraEncontrada = true;
-                //break;
             } else {
                 if ((k == (tamanoPalabra - 1)) && (letraEncontrada == false)) {
                     // Solo cuando se haya revisado todas las letras es que puede haber error
                     ++juego.intentosActual; // Caso donde no acierta
                     std::cout << "Letra incorrecta, intente de nuevo.\n";
-                    //letraEncontrada = false;
                 }
             }
         }
@@ -132,13 +132,13 @@ Partida adivinar(Partida& juego) {
         if (correctas == tamanoPalabra) {
             break; // Ver si ha ganado para no seguir revisando el bucle
         }
-        
     }
     juego.estadoActual = adivinarPtr; // Guardar estado de la palabra adivinada
 
     return juego;
 }
 
+// Funcion para verificar si el jugador ha ganado o perdido
 Partida verificar(Partida juego) {
     if (juego.intentosActual == juego.intentosMax) {
         std::cout << "Ha perdido la partida, se han agotado los intentos." << std::endl;

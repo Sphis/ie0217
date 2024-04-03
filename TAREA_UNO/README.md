@@ -1,5 +1,12 @@
 # Intrucciones de ejecución
-
+Para compilar la tarea se utiliza el siguiente commando:
+```
+g++ -o agenda.exe .\Funciones.cpp .\main.cpp
+```
+Si se toma el ejemplo de arriba y no se cambia el nombre del ejecutable simplemente se hace llamado al mismo de la siguiente forma:
+```
+.\agenda.exe
+```
 # Parte Teórica
 **1. ¿Cuál es la principal diferencia entre C y C++?**
 
