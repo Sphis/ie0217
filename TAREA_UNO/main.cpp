@@ -23,9 +23,11 @@ int main() {
     int numPalabras = 6; // Cantidad de palabras iniciales
     int opcion;
 
+    Partida juego; // Crear datos iniciales del struct
+
     do {
         std::cout << "\nMenu: \n";
-        std::cout << "1. Elegir la dificultad del juego (número de intentos).\n";
+        std::cout << "1. Elegir la dificultad del juego (numero de intentos).\n";
         std::cout << "2. Iniciar el juego.\n";
         std::cout << "3. Agregar palabras al arreglo de palabras que se escogen aleatoriamente.\n";
         std::cout << "4. Ver diccionario de palabras.\n";
@@ -35,13 +37,14 @@ int main() {
         switch(opcion) {
             case DIFICULTAD:
             {
-                //buscarContacto(listaPalabras, numPalabras);
+                dificultad(juego);
                 break;
             }
             case JUGAR:
             {
-                const std::string* palabraAleatoria = init(0, 5, palabras); // Escoger una palabra aleatoria
-                std::cout << *palabraAleatoria << endl;
+                //const std::string* palabraAleatoria = init(0, 5, palabras); // Escoger una palabra aleatoria
+                Partida juego = init(0, 5, palabras); // Solo hay 6 palabras incialmente, por eso 0, 5
+                std::cout << juego.palabra << std::endl;
                 break;
             }
             case AGREGAR:

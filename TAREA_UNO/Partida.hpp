@@ -6,9 +6,9 @@
 
 struct Partida {
     std::string palabra;
-    int estadoActual;
-    int intentosMax;
-    int intentosActual;
+    int estadoActual = 0; // Cantidad de aciertos
+    int intentosMax = 7; // Por predeterminado se empieza en facil
+    int intentosActual = 0;
 };
 
 #endif // PARTIDA_HPP

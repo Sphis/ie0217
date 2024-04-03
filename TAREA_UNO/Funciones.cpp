@@ -24,7 +24,7 @@ void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) 
     }
 }
 
-const std::string* init(int min, int max, const std::vector<std::string>& palabras) {
+Partida init(int min, int max, const std::vector<std::string>& palabras) {
     // Obtener el tiempo actual
     auto tiempoActual = std::chrono::system_clock::now();
     auto duracion = tiempoActual.time_since_epoch();
@@ -54,9 +54,58 @@ const std::string* init(int min, int max, const std::vector<std::string>& palabr
     
     std::cout << palabraAdivinar << std::endl;
 
+    Partida juego;
 
-    return randomWordPtr;
+    juego.palabra = palabra; // Guardar la palabra en el struct
+
+    return juego;
 }
+
+Partida dificultad(Partida juego) {
+    std::string dificultad;
+    bool opcionValida = false;
+
+    std::cout << "Eliga la dificultad:\n"
+    "1. Facil: 7 intentos permitidos.\n"
+    "2. Intermedio: 5 intentos permitidos.\n"
+    "3. Dificil: 3 intentos permitidos.\n";
+    std::cin >> dificultad;
+
+    while (opcionValida == false) {
+        if (dificultad == "Facil") {
+            juego.intentosMax = 7;
+            opcionValida == true;
+            break;
+        } else if (dificultad == "Intermedio") {
+            juego.intentosMax = 5;
+            opcionValida == true;
+        } else if (dificultad == "Dificil") {
+            juego.intentosMax = 3;
+            opcionValida == true;
+        } else {
+            std::cout << "Debe seleccionar Facil, Intermedio o Dificil\n";
+            std::cin >> dificultad;
+        }
+    }
+ 
+    std::cout << "Intentos = " << juego.intentosMax;
+    return juego;
+}
+// int adivinar(std::string palabra) {
+//     int incorrecto, correcto = 0;
+//     int tamanoPalabra = palabra.size();
+//     char letra;
+
+//     std::cout << "Ingrese una letra\n";
+//     std::cin >> letra;
+
+//     for (int k = 0; k < tamanoPalabra; k++)
+//     {
+//         if (palabra[k] == letra) {
+//             correcto++;
+//         }
+//     }
+// }
 
 // std::string init(const std::vector<std::string>& palabras) {
 //     std::random_device rd; // Seed for the random number engine
