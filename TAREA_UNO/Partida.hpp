@@ -1,3 +1,8 @@
+/**
+* @file Partida.hpp
+* Archivo que posee el formato de la estructuras a usar en este programa.
+*/
+
 #ifndef PARTIDA_HPP
 #define PARTIDA_HPP
 

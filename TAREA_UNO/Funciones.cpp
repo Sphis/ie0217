@@ -1,3 +1,8 @@
+/**
+* @file Funciones.cpp
+* Archivo encargado de almacenar todas las funciones a usar.
+*/
+
 #include "Funciones.hpp"
 #include <vector>
 #include <random>
@@ -6,7 +11,12 @@
 #include <cctype>
 #include <iostream>
 
-// Funcion usada para agregar palabras al arreglo de palabras iniciales
+/**
+ * Funcion usada para agregar palabras al arreglo de palabras iniciales
+ * @param[in] palabras
+ * @param[in] numPalabras
+ * @param[out] juego
+*/
 void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
     std::cout << "Ingrese la palabra nueva que desea agregar: ";
     std::string nuevaPalabra;
@@ -18,7 +28,11 @@ void agregarPalabra(std::vector<std::string>& palabras, int numPalabras) {
     }
 }
 
-// Funcion para mostrar palabras que hay en en arreglo
+/**
+ * Funcion para mostrar palabras que hay en en arreglo
+ * @param[in] palabras
+ * @param[in] numPalabras
+*/
 void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) {
     std::cout << "Diccionario de palabras:\n";
     for (int i = 0; i < numPalabras; ++i) {
@@ -26,8 +40,15 @@ void mostrarPalabras(const std::vector<std::string>& palabras, int numPalabras) 
     }
 }
 
-// Funcion para inicializar el juego, se encarga de tomar una palabra aleatoria y generar otro dato que es la misma palabra
-// pero con guines bajos
+/**
+ * Funcion para inicializar el juego, se encarga de tomar una palabra aleatoria y generar otro dato que es la misma palabra
+ * pero con guiones bajos.
+ * @param[in] min
+ * @param[in] max
+ * @param[in] palabras
+ * @param[in] juego
+ * @param[out] juego
+*/
 Partida init(int min, int max, const std::vector<std::string>& palabras, Partida& juego) {
     // Obtener el tiempo actual
     auto tiempoActual = std::chrono::system_clock::now();
@@ -63,7 +84,11 @@ Partida init(int min, int max, const std::vector<std::string>& palabras, Partida
     return juego;
 }
 
-// Funcion usada para modificar la dificultad del juego
+/**
+ * Funcion usada para modificar la dificultad del juego.
+ * @param[in] juego
+ * @param[out] juego
+*/
 Partida dificultad(Partida& juego) {
     std::string dificultad;
     bool opcionValida = false;
@@ -97,8 +122,12 @@ Partida dificultad(Partida& juego) {
     return juego;
 }
 
-// Funcion encargada de pedirle al usuario que ingrese letras y ver si la letra ingresada coincide con
-// la palabra a adivinar.
+/**
+ * Funcion encargada de pedirle al usuario que ingrese letras y ver si la letra ingresada coincide con
+ * la palabra a adivinar.
+ * @param[in] juego
+ * @param[out] juego
+*/
 Partida adivinar(Partida& juego) {
     int tamanoPalabra = juego.palabra.size();
     char letra;
@@ -138,7 +167,11 @@ Partida adivinar(Partida& juego) {
     return juego;
 }
 
-// Funcion para verificar si el jugador ha ganado o perdido
+/**
+ * Funcion para verificar si el jugador ha ganado o perdido.
+ * @param[in] juego
+ * @param[out] juego
+*/
 Partida verificar(Partida juego) {
     if (juego.intentosActual == juego.intentosMax) {
         std::cout << "Ha perdido la partida, se han agotado los intentos." << std::endl;

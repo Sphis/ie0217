@@ -1,3 +1,8 @@
+/**
+* @file main.cpp
+* Archivo main donde se ejecutan las funciones para poder jugar un juego de ahorcado.
+*/
+
 #include <iostream>
 #include <vector>
 #include "Partida.hpp"

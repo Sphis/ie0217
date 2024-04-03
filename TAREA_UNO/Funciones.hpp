@@ -1,3 +1,8 @@
+/**
+* @file Funciones.hpp
+* Arcivo encabezado que tiene todos los prototipos de las funciones.
+*/
+
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP
 
