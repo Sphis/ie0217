@@ -23,7 +23,7 @@ int main() {
     int numPalabras = 6; // Cantidad de palabras iniciales
     int opcion;
 
-    Partida juego; // Crear datos iniciales del struct
+    Partida juego; // Inicializar el struct con algunos valores predeterminados
 
     do {
         std::cout << "\nMenu: \n";
@@ -42,9 +42,9 @@ int main() {
             }
             case JUGAR:
             {
-                //const std::string* palabraAleatoria = init(0, 5, palabras); // Escoger una palabra aleatoria
                 Partida juego = init(0, 5, palabras); // Solo hay 6 palabras incialmente, por eso 0, 5
                 std::cout << juego.palabra << std::endl;
+                adivinar(juego);
                 break;
             }
             case AGREGAR:

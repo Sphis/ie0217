@@ -49,7 +49,7 @@ Partida init(int min, int max, const std::vector<std::string>& palabras) {
     std::string palabraAdivinar = "";
 
     for (int i = 0; i < tamanoPalabra; i++) {
-        palabraAdivinar.append("_ ");
+        palabraAdivinar.append("_");
     }
     
     std::cout << palabraAdivinar << std::endl;
@@ -57,6 +57,7 @@ Partida init(int min, int max, const std::vector<std::string>& palabras) {
     Partida juego;
 
     juego.palabra = palabra; // Guardar la palabra en el struct
+    juego.estadoActual = palabraAdivinar; // Guardar los guiones bajos en el struct
 
     return juego;
 }
@@ -79,9 +80,11 @@ Partida dificultad(Partida juego) {
         } else if (dificultad == "Intermedio") {
             juego.intentosMax = 5;
             opcionValida == true;
+            break;
         } else if (dificultad == "Dificil") {
             juego.intentosMax = 3;
             opcionValida == true;
+            break;
         } else {
             std::cout << "Debe seleccionar Facil, Intermedio o Dificil\n";
             std::cin >> dificultad;
@@ -91,51 +94,81 @@ Partida dificultad(Partida juego) {
     std::cout << "Intentos = " << juego.intentosMax;
     return juego;
 }
-// int adivinar(std::string palabra) {
-//     int incorrecto, correcto = 0;
-//     int tamanoPalabra = palabra.size();
+
+Partida adivinar(Partida juego) {
+    int tamanoPalabra = juego.palabra.size();
+    char letra;
+
+    char* adivinarPtr = &juego.estadoActual[0]; // Puntero para la palabra con guines bajos
+    char* originalPtr = &juego.palabra[0]; // Puntero para la palabra original con letras
+
+    while (juego.intentosActual < juego.intentosMax) {
+        std::cout << "Ingrese una letra\n";
+        std::cin >> letra;
+
+        for (int k = 0; k < tamanoPalabra; k++) {
+            if (originalPtr[k] == letra) {
+                adivinarPtr[k] = originalPtr[k]; // Reemplazar guion por letra
+                std::cout << "Letra correcta.\n";
+                break;
+            } else {
+                if (k == (tamanoPalabra - 1)) {
+                    // Solo cuando se haya revisado todas las letras es que puede haber error
+                    ++juego.intentosActual; // Caso donde no acierta
+                    std::cout << "Letra incorrecta, intente de nuevo.\n";
+                }
+            }
+            // std::cout << adivinarPtr[k] << std::endl;
+            // std::cout << originalPtr[k] << std::endl;
+        }
+        std::cout << adivinarPtr << std::endl;
+    }
+    
+
+    // while (true) {
+    //     std::cout << "Ingrese una letra\n";
+    //     std::cin >> letra;
+
+    //     for (int k = 0; k < tamanoPalabra; k++) {
+    //         if (*originalPtr == letra) {
+    //             juego.intentosActual++; // Adivina correctamente
+    //             *adivinarPtr = *originalPtr; // Actualizar el guion bajo con la letra
+    //             std::cout << "Correcto" << adivinarPtr << std::endl;
+    //         }
+    //         // Continuar con el siguiente valor
+    //         ++originalPtr;
+    //         ++adivinarPtr;
+    //     }
+    //     std::cout << adivinarPtr << std::endl;
+    // }
+
+    return juego;
+}
+
+// Chat gpt reference
+// Partida adivinar(Partida juego) {
+//     int tamanoPalabra = juego.palabra.size();
 //     char letra;
 
-//     std::cout << "Ingrese una letra\n";
-//     std::cin >> letra;
+//     char* adivinarPtr = &juego.palabra[0]; // Puntero para la palabra con guines bajos
+//     char* originalPtr = &juego.estadoActual[0]; // Puntero para la palabra original con letras
 
-//     for (int k = 0; k < tamanoPalabra; k++)
+//     while (1 > 0)
 //     {
-//         if (palabra[k] == letra) {
-//             correcto++;
+//         std::cout << "Ingrese una letra\n";
+//         std::cin >> letra;
+
+//         for (char& c : juego.palabra) {
+//             if (c == letra) {
+//                 juego.intentosActual++; // Adivina correctamente
+//                 *adivinarPtr = c; // Actualizar el guion bajo con la letra
+//                 std::cout << "Correcto" << std::endl;
+//             }
+//             // Continuar con el siguiente valor
+//             ++adivinarPtr;
 //         }
+//         std::cout << adivinarPtr << std::endl;
 //     }
-// }
 
-// std::string init(const std::vector<std::string>& palabras) {
-//     std::random_device rd; // Seed for the random number engine
-//     std::mt19937 gen(rd()); // Mersenne Twister pseudo-random number generator
-//     std::uniform_int_distribution<> dis(0, palabras.size() - 1); // Uniform distribution of integers between 0 and palabras.size()-1
-
-//     int randomIndex = dis(gen); // Generate a random index
-
-//     // Use pointer arithmetic to access the random word
-//     const std::string* randomWordPtr = &palabras[randomIndex];
-
-//     // Dereference the pointer to get the random word
-//     return *randomWordPtr;
-// }
-
-// void buscarContacto(const Partida listaPalabras[], int numPalabras) {
-//     std::string nombreBusqueda;
-//     std::cout << "Ingrese el nombre a buscar: ";
-//     std::cin >> nombreBusqueda;
-//     bool encontrado = false;
-//     for (int i = 0; i < numPalabras; i++) {
-//         if(listaPalabras[i].nombre == nombreBusqueda) {
-//             std::cout << "Nombre: " << listaPalabras[i].nombre << ", Telefono: " << listaPalabras[i].telefono << "\n";
-//             encontrado = true;
-//             break;
-//         }
-//     }
-//     if (!encontrado)
-//     {
-//         std::cout << "Partida no encontrado.\n";
-//     }
-    
+//     return juego;
 // }
