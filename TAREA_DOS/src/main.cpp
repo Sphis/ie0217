@@ -17,6 +17,8 @@ enum Operaciones {
 int main() {
     int opcion; ///< Opcion para el menu ingresado por el usuario
     Pais pais1(1, 1000);
+    PaisEnDesarrollo costaRica(1, 100000);
+    PaisPrimerMundo japon(2, 200000, true, true, true);
 
     do {
         std::cout << "\nMenu: \n";
