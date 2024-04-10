@@ -1,7 +1,7 @@
 # Intrucciones de ejecución
 Para ejecutar el programa se utiliza el siguiente comando:
 ```
-.\test.exe .\main.cpp .\Planeta.cpp
+g++ -o .\test.exe .\main.cpp .\Planeta.cpp
 ```
 Seguidamente se corre el ejecutable:
 ```
