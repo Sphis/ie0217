@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Planeta.hpp"
 
 enum Operaciones {
     IMPRIMIR = 1,
@@ -10,6 +11,7 @@ enum Operaciones {
 
 int main() {
     int opcion;
+    Pais pais1(1, 1000);
 
     do {
         std::cout << "\nMenu: \n";
@@ -21,9 +23,12 @@ int main() {
         std::cin >> opcion;
 
         switch(opcion) {
-            case IMPRIMIR:
+            case IMPRIMIR: {
+                int test = pais1.getPib();
+                std::cout << test << std::endl;
                 // imprimir();
                 break;
+            }
             case COMPARAR:
                 // comparar();
                 break;

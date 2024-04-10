@@ -29,20 +29,13 @@ class Pais {
 
     public:
         int habitantes;
-        Pais(int identificador, int habitantes) : identificador(identificador), habitantes(habitantes) {
-            pib = rand() % 100000 + 50; // Numero aleatorio entre 50 y 100000 para el PIB
-        }
 
-        double getPib() const {
-            return pib; // Devolver PIB
-        }
+        Pais(int _identificador, int _habitantes);
+        
+        double getPib() const;
 
         // Sobrecarga de operador para ver si un pais tiene el mismo identificador que otro
-        bool operator==(const Pais& otro) const {
-            return this->identificador == otro.identificador;
-        }
+        bool operator==(const Pais& otro) const;
 };
-
-
 
 #endif // PLANETA_HPP
