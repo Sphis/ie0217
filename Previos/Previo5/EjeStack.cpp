@@ -4,10 +4,10 @@
 
 using namespace std;
 
-#define MAX 10
+#define MAX 10 // Tamaño máximo del stack
 int size = 0;
 
-// Creating a stack
+// Creando estructura para simular un stack
 struct stack {
     int items [MAX];
     int top;
@@ -19,7 +19,7 @@ void createEmptyStack(st *s) {
     s->top = -1;
 }
 
-// Check if the stack is full
+// Revisar si la pila está llena
 int isfull(st *s) {
     if (s->top == MAX - 1)
         return 1;
@@ -27,7 +27,7 @@ int isfull(st *s) {
         return 0;
 }
 
-// Check if the stack is empty
+// Revisar si la pila está vacida
 int isempty(st *s) {
     if (s->top == -1)
         return 1;
@@ -35,7 +35,7 @@ int isempty(st *s) {
         return 0;
 }
 
-// Add elements into stack
+// Agregar nuevos elementos a la pila
 void push(st *s, int newitem) {
     if (isfull(s)) {
         cout << "STACK FULL";
@@ -46,7 +46,7 @@ void push(st *s, int newitem) {
     }
 }
 
-// Remove element from stack
+// Eliminar un elemento de la pila
 void pop(st *s) {
     if (isempty(s)) {
         cout << "\n STACK EMPTY \n";
@@ -58,7 +58,7 @@ void pop(st *s) {
     cout << endl;
 }
 
-// Print elements of stack
+// Imprimir elementos de la pila
 void printStack(st *s) {
     printf("Stack: ");
     for (int i = 0; i < size; i++) {

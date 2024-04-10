@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-// Creating a node
+// Se crea un nodo
 class Node {
     public:
         int value;
