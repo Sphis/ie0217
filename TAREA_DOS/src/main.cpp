@@ -24,8 +24,20 @@ int main() {
 
         switch(opcion) {
             case IMPRIMIR: {
-                int test = pais1.getPib();
-                std::cout << test << std::endl;
+                // int test = pais1.getPib();
+                // std::cout << test << std::endl;
+
+                PaisPrimerMundo test = PaisPrimerMundo(1, 500000, true, true, false);
+                bool network = test.tiene5G();
+                std::cout << network << std::endl;
+
+                bool aero = test.tieneAeropuerto();
+                std::cout << aero << std::endl;
+
+                bool centro = test.tieneCID();
+                std::cout << centro << std::endl;
+
+
                 // imprimir();
                 break;
             }
