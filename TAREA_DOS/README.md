@@ -1,4 +1,13 @@
 # Intrucciones de ejecución
+Para ejecutar el programa se utiliza el siguiente comando:
+```
+.\test.exe .\main.cpp .\Planeta.cpp
+```
+Seguidamente se corre el ejecutable:
+```
+.\test.exe
+```
+Con respecto a la generación del archivo de Doxygen se agrega la carpeta con los archivos HTML, sin embargo, no se logró subir al sitio recomendado de Netlify, sin embargo, si se desea ver el resultado, simplemente se descarga la carpeta `html` y se abre el documento con el nombre de `index.html` para abrir la página principal de lo creado.
 
 # Parte teórica
 **1. ¿Qué es la programación orientada a objetos y cuáles son sus principales principios?**
