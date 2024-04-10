@@ -1,13 +1,17 @@
+/**
+* @file Planeta.cpp
+* Archivo donde se encuentran los métodos de las clases a usar.
+*/
+
 #include "Planeta.hpp"
 #include <iostream>
 #include <cstdlib> // Para generar números aleatorios
 #include <ctime> // Semilla aleatoria para que sea diferente cada ejecucion
 
-////// Clase de pais
+// Clase de pais
 Pais::Pais(int _identificador, int _habitantes) :
     identificador(_identificador), habitantes(_habitantes) {
-    // Generar PIB aleatoriamente
-    pib = rand() % 10000 + 1000; // PIB entre 1000 y 10000
+    pib = rand() % 10000 + 1000; ///< Generar un PIB aleatorio entre 1000 y 10999
 }
 
 double Pais::getPib() const {
@@ -19,7 +23,7 @@ bool Pais::operator==(const Pais& otro) const {
     return this->identificador == otro.identificador;
 }
 
-////// Clase de PaisPrimerMundo
+// Clase de PaisPrimerMundo
 PaisPrimerMundo::PaisPrimerMundo(int _identificador, int _poblacion, bool _tecnologia5G, bool _Aeropuerto, bool _CID)
         : Pais(_identificador, _poblacion), tecnologia5G(_tecnologia5G), Aeropuerto(_Aeropuerto), CID(_CID) {}
 

@@ -1,3 +1,8 @@
+/**
+* @file main.cpp
+* Archivo main donde se ejecutan las funciones o donde se hace el llamado de las clases y sus métodos.
+* También es donde se tiene el menú principal.
+*/
 #include <iostream>
 #include "Planeta.hpp"
 
@@ -10,7 +15,7 @@ enum Operaciones {
 };
 
 int main() {
-    int opcion;
+    int opcion; ///< Opcion para el menu ingresado por el usuario
     Pais pais1(1, 1000);
 
     do {
@@ -27,15 +32,18 @@ int main() {
                 // int test = pais1.getPib();
                 // std::cout << test << std::endl;
 
-                PaisPrimerMundo test = PaisPrimerMundo(1, 500000, true, true, false);
-                bool network = test.tiene5G();
-                std::cout << network << std::endl;
+                // PaisPrimerMundo test = PaisPrimerMundo(1, 500000, true, true, false);
+                // bool network = test.tiene5G();
+                // std::cout << network << std::endl;
 
-                bool aero = test.tieneAeropuerto();
-                std::cout << aero << std::endl;
+                // bool aero = test.tieneAeropuerto();
+                // std::cout << aero << std::endl;
 
-                bool centro = test.tieneCID();
-                std::cout << centro << std::endl;
+                // bool centro = test.tieneCID();
+                // std::cout << centro << std::endl;
+
+                Continentes test;
+                test.infoGeneral();
 
 
                 // imprimir();
