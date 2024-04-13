@@ -12,7 +12,9 @@ void bubbleSort(int array[], int size) {
     for (int step = 0; step < size; ++step) {
 
         // loop to compare array elements
-        for (int i = 0; i < size - step; ++i) {
+        // En el ejemplo de la presentacion no está *size - step <- 1>*, sin embargo el -1 es necesario porque se empieza en 0
+        // y size devuelve el numero de elementos sin considerar el elemento 0.
+        for (int i = 0; i < size - step - 1; ++i) {
 
             // compare two adjacent elements
             // change > to < to sort in descending order
