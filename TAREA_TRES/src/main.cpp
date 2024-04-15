@@ -16,8 +16,12 @@ enum Operaciones {
 };
 
 int main() {
-    Contacto* listaContactos = nullptr;
+    Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
     int opcion; ///< Opcion para el menu ingresado por el usuario
+    //int numContactos = 0; // Contador de contactos
+    HashTable HT;
+    int numTelefono;
+    string nombre;
 
     do {
         cout << "\nMenu: \n";
@@ -30,7 +34,11 @@ int main() {
 
         switch(opcion) {
             case AGREGAR: {
-                agregarContacto(listaContactos);
+                    cout << "Digite el numero de telefono" << endl;
+                    cin >> numTelefono;
+                    cout << "Digite el nombre" << endl;
+                    cin >> nombre;
+                    HT.agregarElemento(numTelefono, nombre);
                 break;
             }
             case ELIMINAR:
@@ -38,9 +46,10 @@ int main() {
                 break;
             case IMPRIMIR:
                 // imprimirContactos();
+                HT.imprimirTabla();
                 break;
             case MOSTRAR:
-                mostrarContactos(listaContactos);
+                // mostrarContactos(listaContactos);
                 break;
             case SALIR:
                 cout << "Saliendo del programa... \n";
