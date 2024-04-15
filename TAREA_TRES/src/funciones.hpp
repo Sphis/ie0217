@@ -9,12 +9,12 @@ using namespace std;
 
 // Contacto a usar para estructuras de datos
 struct Contacto {
-    string nombre;
-    string numeroTelefono;
+    string nombreLista; // Nombre de la persona en la lista enlazada
+    int numeroTelefonoLista; // Numero de la persona en la lista enlazada
     Contacto* siguiente; // Puntero que devuelve el siguiente libro. Este puntero se va a usar para la lista enlazada.
 };
 
-void agregarContacto(Contacto*& lista);
+void agregarContacto(Contacto*& lista, string nombre, int numTelefono);
 //void eliminarContacto();
 //void imprimirContactos();
 void mostrarContactos(Contacto* lista);

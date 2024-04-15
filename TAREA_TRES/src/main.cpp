@@ -4,6 +4,7 @@
 * También es donde se tiene el menú principal.
 */
 #include <iostream>
+#include <string>
 #include "funciones.hpp"
 using namespace std;
 
@@ -22,6 +23,7 @@ int main() {
     HashTable HT;
     int numTelefono;
     string nombre;
+    int key;
 
     do {
         cout << "\nMenu: \n";
@@ -34,22 +36,28 @@ int main() {
 
         switch(opcion) {
             case AGREGAR: {
-                    cout << "Digite el numero de telefono" << endl;
+                    cout << "Ingrese el nombre del contacto: " << endl;
+                    cin.ignore(); // Sino se muestran 2 opciones a la vez
+                    getline(cin, nombre); // getline para pedir todo lo que ingresa el usuario, no solo la palabra
+
+                    cout << "Ingrese el numero de telefono: " << endl;
                     cin >> numTelefono;
-                    cout << "Digite el nombre" << endl;
-                    cin >> nombre;
-                    HT.agregarElemento(numTelefono, nombre);
+
+                    // HT.agregarElemento(numTelefono, nombre);
+                    agregarContacto(listaContactos, nombre, numTelefono);
                 break;
             }
             case ELIMINAR:
-                // eliminarContacto();
+                    cout << "Digite el numero de telefono que desea eliminar." << endl;
+                    cin >> key;
+                    HT.quitarElemento(key);
                 break;
             case IMPRIMIR:
                 // imprimirContactos();
                 HT.imprimirTabla();
                 break;
             case MOSTRAR:
-                // mostrarContactos(listaContactos);
+                mostrarContactos(listaContactos);
                 break;
             case SALIR:
                 cout << "Saliendo del programa... \n";

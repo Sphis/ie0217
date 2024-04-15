@@ -6,15 +6,11 @@
 using namespace std;
 
 // Libro*& = Referencia de una variable tipo puntero
-void agregarContacto(Contacto*& lista) {
+void agregarContacto(Contacto*& lista, string nombre, int numTelefono) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
 
-    cout << "Ingrese el nombre del contacto: " << endl;
-    cin.ignore(); // Sino se muestran 2 opciones a la vez
-    getline(cin, nuevoContacto->nombre); // getline para pedir todo lo que ingresa el usuario, no solo la palabra
-
-    cout << "Ingrese el numero de telefono: " << endl;
-    getline(cin, nuevoContacto->numeroTelefono);
+    nuevoContacto->numeroTelefonoLista = numTelefono; // agregar telefono al contacto
+    nuevoContacto->nombreLista = nombre; // agregar nombre al contacto
 
     nuevoContacto->siguiente = lista; // Agregar el nuevo Contacto
 
@@ -31,8 +27,8 @@ void mostrarContactos(Contacto* lista) {
 
     cout << "Lista de Contactos: " << endl;
     while (lista != nullptr) {
-        cout << "Nombre: " << lista->nombre << endl;
-        cout << "Telefono: " << lista->numeroTelefono << endl;
+        cout << "Nombre: " << lista->nombreLista << endl;
+        cout << "Telefono: " << lista->numeroTelefonoLista << endl;
         lista = lista->siguiente;
     }
 }
