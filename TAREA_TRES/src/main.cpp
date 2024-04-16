@@ -44,7 +44,7 @@ int main() {
                     cin >> numTelefono;
 
                     // HT.agregarElemento(numTelefono, nombre);
-                    agregarContacto(listaContactos, nombre, numTelefono);
+                    agregarContacto(listaContactos, numTelefono, nombre);
                 break;
             }
             case ELIMINAR:

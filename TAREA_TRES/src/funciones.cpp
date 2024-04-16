@@ -6,7 +6,7 @@
 using namespace std;
 
 // Libro*& = Referencia de una variable tipo puntero
-void agregarContacto(Contacto*& lista, string nombre, int numTelefono) {
+void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
 
     nuevoContacto->numeroTelefonoLista = numTelefono; // agregar telefono al contacto

@@ -14,7 +14,7 @@ struct Contacto {
     Contacto* siguiente; // Puntero que devuelve el siguiente libro. Este puntero se va a usar para la lista enlazada.
 };
 
-void agregarContacto(Contacto*& lista, string nombre, int numTelefono);
+void agregarContacto(Contacto*& lista, int numTelefono, string nombre);
 //void eliminarContacto();
 //void imprimirContactos();
 void mostrarContactos(Contacto* lista);
