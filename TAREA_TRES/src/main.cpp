@@ -19,11 +19,22 @@ enum Operaciones {
 int main() {
     Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
     int opcion; ///< Opcion para el menu ingresado por el usuario
-    //int numContactos = 0; // Contador de contactos
     HashTable HT;
     int numTelefono;
     string nombre;
     int key;
+
+    int capacidad = 5; // Capacidad inicial (se pueden agregar 5 contactos), si se supera este valor la capacidad se duplica
+    int numContactos = 0; // Numero de contactos en la memoria de celular
+    int numCel = 0; // Numero de contactos en la memoria de celular
+    ContactoCel* agenda = (ContactoCel*)malloc(capacidad * sizeof(ContactoCel)); // Agenda seria el puntero que sostiene los contactos
+    char nombreCel[100]; // Esto significa que el usuario puede usar 99 caracteres para un nombre
+
+    // En este caso se devuelve puntero nulo
+    if (!agenda) { 
+        cerr << "Hubo un fallo en la asignacion de memoria." << endl;
+        exit(1); // Salir con error
+    }
 
     do {
         cout << "\nMenu: \n";
@@ -37,24 +48,32 @@ int main() {
         switch(opcion) {
             case AGREGAR: {
                     cout << "Ingrese el nombre del contacto: " << endl;
-                    cin.ignore(); // Sino se muestran 2 opciones a la vez
-                    getline(cin, nombre); // getline para pedir todo lo que ingresa el usuario, no solo la palabra
+                    cin.ignore(); // Limpiar el buffer sino genera problemas
+                    getline(cin, nombre);
+                    strcpy(nombreCel, nombre.c_str());
+
+                    //cin.ignore(); // Sino se muestran 2 opciones a la vez
 
                     cout << "Ingrese el numero de telefono: " << endl;
                     cin >> numTelefono;
+                    cin.ignore(); // Ignorar \n
 
+                    // ARREGLAR nombre cel
+                    memCel(agenda, numContactos, numTelefono, nombreCel, capacidad);
                     // HT.agregarElemento(numTelefono, nombre);
-                    agregarContacto(listaContactos, numTelefono, nombre);
+                    // agregarContacto(listaContactos, numTelefono, nombre);
                 break;
             }
             case ELIMINAR:
                     cout << "Digite el numero de telefono que desea eliminar." << endl;
                     cin >> key;
-                    HT.quitarElemento(key);
+                    // HT.quitarElemento(key);
+                    eliminarContacto(agenda, numContactos);
                 break;
             case IMPRIMIR:
                 // imprimirContactos();
-                HT.imprimirTabla();
+                // HT.imprimirTabla();
+                imprimirCel(agenda, numContactos);
                 break;
             case MOSTRAR:
                 mostrarContactos(listaContactos);

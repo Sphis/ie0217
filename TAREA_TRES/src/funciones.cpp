@@ -113,3 +113,58 @@ void HashTable::imprimirTabla() {
     }
     return;
 }
+
+        // Funciones para la memoria de celular
+// Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
+void imprimirCel(ContactoCel* agenda, int numContactos) {
+    // Imprimir contactos de la memoria de celular
+    cout << "\nAgenda:\n";
+    for (int k = 0; k < numContactos; ++k) {
+        cout << "Nombre: " << agenda[k].nombreCel << ", Numero de telefono: " << agenda[k].numTelefono << endl;
+    }
+}
+
+// Funcion que agregar contacto a la memoria de celular usando malloc()
+void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad) {
+    // Esto es para ver si se ha superado la capacidad, si es asi, solicitar mas memoria
+    if (numContactos >= capacidad) {
+        capacidad *= 2; // Aumentar capacidad en doble al inicial
+        agenda = (ContactoCel*)realloc(agenda, capacidad * sizeof(ContactoCel)); // Solicitar mas memoria porque se ha superado la capacidad
+        if (!agenda) {
+            cerr << "Hubo un fallo en la reasignacion de memoria." << endl; // Esto para indicar que hubo un error
+            exit(1); // Salir con error
+        }
+    }
+
+    // Asignar memoria para el nombre del contacto
+    agenda[numContactos].nombreCel = (char*)malloc(strlen(nombreCel) + 1); // Solicitar memoria basado en la cantidad de contactos que hay
+    if (!agenda[numContactos].nombreCel) {
+        cerr << "Hubo un fallo en la asignacion de memoria." << endl;
+        exit(1);
+    }
+    strcpy(agenda[numContactos].nombreCel, nombreCel); // Copiar lo ingresado al nombre del stuct
+
+    // Set phone number
+    agenda[numContactos].numTelefono = numTelefono;
+
+    ++numContactos; // Se agrego un contacto
+}
+
+void eliminarContacto(ContactoCel* agenda, int& numContactos) {
+    string nombreCel;
+    string nombreBorrar;
+    cout << "Digite el nombre del usuario que desea borrar" << endl;
+    cin >> nombreBorrar;
+
+    for (int k = 0; k < numContactos; ++k) {
+        if (agenda[k].nombreCel == nombreBorrar) {
+            free(agenda[k].nombreCel); // Borrar el nombre
+
+            agenda[k] = agenda[numContactos - 1];
+
+            --numContactos; // Reducir numero de contactos
+            return;
+        }
+    }
+    cout << "No se encontro un contacto con ese nombre" << endl;
+}

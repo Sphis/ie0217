@@ -7,7 +7,13 @@
 
 using namespace std;
 
-// Contacto a usar para estructuras de datos
+// Contacto para la memoria celular
+struct ContactoCel {
+    char* nombreCel;
+    int numTelefono;
+};
+
+// Contacto a usar para la nube (lista enlazada)
 struct Contacto {
     string nombreLista; // Nombre de la persona en la lista enlazada
     int numeroTelefonoLista; // Numero de la persona en la lista enlazada
@@ -34,5 +40,12 @@ class HashTable {
         void quitarElemento(int key);
         void imprimirTabla();
 };
+
+                    // Funciones para la memoria celular
+// Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
+void imprimirCel(ContactoCel* agenda, int numContactos);
+// Funcion que agregar contacto a la memoria de celular usando malloc()
+void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad);
+void eliminarContacto(ContactoCel* agenda, int& numContactos);
 
 #endif
