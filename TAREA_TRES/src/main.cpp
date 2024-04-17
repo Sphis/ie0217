@@ -17,20 +17,23 @@ enum Operaciones {
 };
 
 int main() {
-    Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
     int opcion; ///< Opcion para el menu ingresado por el usuario
-    HashTable HT;
     int numTelefono;
     string nombre;
+
+    // Variables para hashtable
+    Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
+    HashTable HT; // Crear el hash table
     int key;
 
+    // Variables para la memoria de celular (malloc)
     int capacidad = 5; // Capacidad inicial (se pueden agregar 5 contactos), si se supera este valor la capacidad se duplica
     int numContactos = 0; // Numero de contactos en la memoria de celular
     int numCel = 0; // Numero de contactos en la memoria de celular
     ContactoCel* agenda = (ContactoCel*)malloc(capacidad * sizeof(ContactoCel)); // Agenda seria el puntero que sostiene los contactos
-    char nombreCel[100]; // Esto significa que el usuario puede usar 99 caracteres para un nombre
+    char nombreCel[50]; // Esto significa que el usuario puede usar 99 caracteres para un nombre
 
-    // En este caso se devuelve puntero nulo
+    // agenda es nullptr es porque hubo un fallor
     if (!agenda) { 
         cerr << "Hubo un fallo en la asignacion de memoria." << endl;
         exit(1); // Salir con error
@@ -47,36 +50,33 @@ int main() {
 
         switch(opcion) {
             case AGREGAR: {
-                    cout << "Ingrese el nombre del contacto: " << endl;
-                    cin.ignore(); // Limpiar el buffer sino genera problemas
-                    getline(cin, nombre);
-                    strcpy(nombreCel, nombre.c_str());
+                cout << "Ingrese el nombre del contacto: " << endl;
+                cin.ignore(); // Limpiar el buffer sino genera problemas
+                getline(cin, nombre); // Guardar nombre para cloud
+                strcpy(nombreCel, nombre.c_str()); // Guardar nombre para memoria celular
 
-                    //cin.ignore(); // Sino se muestran 2 opciones a la vez
+                cout << "Ingrese el numero de telefono: " << endl;
+                cin >> numTelefono;
+                cin.ignore();
 
-                    cout << "Ingrese el numero de telefono: " << endl;
-                    cin >> numTelefono;
-                    cin.ignore(); // Ignorar \n
-
-                    // ARREGLAR nombre cel
-                    memCel(agenda, numContactos, numTelefono, nombreCel, capacidad);
-                    // HT.agregarElemento(numTelefono, nombre);
-                    // agregarContacto(listaContactos, numTelefono, nombre);
+                memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
+                HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
+                // agregarContacto(listaContactos, numTelefono, nombre); // Agregar contacto a la lista enlazada
                 break;
             }
             case ELIMINAR:
-                    cout << "Digite el numero de telefono que desea eliminar." << endl;
-                    cin >> key;
-                    // HT.quitarElemento(key);
-                    eliminarContacto(agenda, numContactos);
+                cout << "Digite el nombre del contacto que desea eliminar." << endl;
+                cin >> nombre;
+                HT.quitarElemento(nombre); // Eliminar contacto del hash table
+                // eliminarContacto(agenda, numContactos); // Elminar contacto de la memoria celular
                 break;
             case IMPRIMIR:
-                // imprimirContactos();
-                // HT.imprimirTabla();
-                imprimirCel(agenda, numContactos);
+                // imprimirContactos(); // Imprimir lista enlazada
+                // HT.imprimirTabla(); // Imprimir hash table
+                // imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;
             case MOSTRAR:
-                mostrarContactos(listaContactos);
+                // mostrarContactos(listaContactos);
                 break;
             case SALIR:
                 cout << "Saliendo del programa... \n";

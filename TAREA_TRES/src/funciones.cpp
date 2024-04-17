@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 // Libro*& = Referencia de una variable tipo puntero
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
@@ -81,14 +82,53 @@ void HashTable::agregarElemento(int key, string value) {
     return;
 }
 
+// // Funcion para quitar contactos, se quita
+// void HashTable::quitarElemento(int key) {
+//     int hashValor = hashFunction(key);
+//     auto& cell = tabla[hashValor];
+//     auto iteradorInicio = begin(cell);
+//     bool keyExiste = false;
+//     for (; iteradorInicio != end(cell); iteradorInicio++) {
+//         if (iteradorInicio->first == key) {
+//             keyExiste = true;
+//             cell.erase(iteradorInicio);
+//             cout << "Se elimino el contacto." << endl;
+//             break;
+//         }
+//     }
+
+//     if (!keyExiste) {
+//         cout << "No se ha encontrado contacto con ese numero.";
+//     }
+//     return;
+// }
+
+// TEST TO DELETE WITH NAME
 // Funcion para quitar contactos, se quita
-void HashTable::quitarElemento(int key) {
-    int hashValor = hashFunction(key);
+void HashTable::quitarElemento(string nombreBorrar) {
+    int keyBorrar{};
+    // Primero buscar el key con el nombre
+    for (int i{}; i < hashGroups; i++) {
+        if (tabla[i].size() == 0) continue;
+
+        auto iteradorInicio = tabla[i].begin();
+        for (; iteradorInicio != tabla[i].end(); iteradorInicio++) {
+            if (iteradorInicio->second == nombreBorrar) {
+                cout << "Numero de telefono: " << iteradorInicio->first << " Nombre: " << iteradorInicio->second << endl;
+                keyBorrar = iteradorInicio->first;
+                break;
+            }
+        }
+    }
+
+    // Ahora borrar ese key con ese nombre
+    int hashValor = hashFunction(keyBorrar);
     auto& cell = tabla[hashValor];
     auto iteradorInicio = begin(cell);
     bool keyExiste = false;
+
     for (; iteradorInicio != end(cell); iteradorInicio++) {
-        if (iteradorInicio->first == key) {
+        if (iteradorInicio->first == keyBorrar) {
             keyExiste = true;
             cell.erase(iteradorInicio);
             cout << "Se elimino el contacto." << endl;

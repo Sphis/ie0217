@@ -20,10 +20,11 @@ struct Contacto {
     Contacto* siguiente; // Puntero que devuelve el siguiente libro. Este puntero se va a usar para la lista enlazada.
 };
 
+        // Funciones de lista enlazada
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre);
+void mostrarContactos(Contacto* lista);
 //void eliminarContacto();
 //void imprimirContactos();
-void mostrarContactos(Contacto* lista);
 //void liberarMemoria(Contacto*& lista);
 
 // Clase utilizada para el hash table
@@ -37,11 +38,11 @@ class HashTable {
         bool estaVacio() const;
         int hashFunction(int key);
         void agregarElemento(int key, string value);
-        void quitarElemento(int key);
+        void quitarElemento(string nombreBorrar);
         void imprimirTabla();
 };
 
-                    // Funciones para la memoria celular
+        // Funciones para la memoria celular
 // Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
 void imprimirCel(ContactoCel* agenda, int numContactos);
 // Funcion que agregar contacto a la memoria de celular usando malloc()
