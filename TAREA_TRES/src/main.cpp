@@ -21,8 +21,10 @@ int main() {
     int numTelefono;
     string nombre;
 
-    // Variables para hashtable
+    // Para la lista enlazada
     Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
+
+    // Variables para hashtable
     HashTable HT; // Crear el hash table
     int key;
 
@@ -33,7 +35,7 @@ int main() {
     ContactoCel* agenda = (ContactoCel*)malloc(capacidad * sizeof(ContactoCel)); // Agenda seria el puntero que sostiene los contactos
     char nombreCel[50]; // Esto significa que el usuario puede usar 99 caracteres para un nombre
 
-    // agenda es nullptr es porque hubo un fallor
+    // agenda es nullptr es porque hubo un fallo
     if (!agenda) { 
         cerr << "Hubo un fallo en la asignacion de memoria." << endl;
         exit(1); // Salir con error
@@ -59,24 +61,25 @@ int main() {
                 cin >> numTelefono;
                 cin.ignore();
 
-                memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
-                HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
-                // agregarContacto(listaContactos, numTelefono, nombre); // Agregar contacto a la lista enlazada
+                // memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
+                // HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
+                agregarContacto(listaContactos, numTelefono, nombre); // Agregar contacto a la lista enlazada
                 break;
             }
             case ELIMINAR:
                 cout << "Digite el nombre del contacto que desea eliminar." << endl;
                 cin >> nombre;
-                HT.quitarElemento(nombre); // Eliminar contacto del hash table
+                // HT.quitarElemento(nombre); // Eliminar contacto del hash table
                 // eliminarContacto(agenda, numContactos); // Elminar contacto de la memoria celular
+                eliminarContactoLista(listaContactos, nombre);
                 break;
             case IMPRIMIR:
-                // imprimirContactos(); // Imprimir lista enlazada
+                mostrarContactos(listaContactos); // Imprimir lista enlazada
                 // HT.imprimirTabla(); // Imprimir hash table
                 // imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;
             case MOSTRAR:
-                // mostrarContactos(listaContactos);
+                // FALTA ORDEN ALFABETICO
                 break;
             case SALIR:
                 cout << "Saliendo del programa... \n";
@@ -87,6 +90,8 @@ int main() {
         }
     } while (opcion != SALIR);
 
-    void liberarMemoria();
+    void liberarMemoria(); // Liberar memoria de la lista enlazada
+    free(agenda); // Liberar memoria celular (dinamica)
+
     return 0;
 }

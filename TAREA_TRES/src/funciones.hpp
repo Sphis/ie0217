@@ -23,7 +23,7 @@ struct Contacto {
         // Funciones de lista enlazada
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre);
 void mostrarContactos(Contacto* lista);
-//void eliminarContacto();
+void eliminarContactoLista(Contacto* lista, string nombre);
 //void imprimirContactos();
 //void liberarMemoria(Contacto*& lista);
 

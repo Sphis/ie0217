@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+        // Funciones de la lista:
 // Libro*& = Referencia de una variable tipo puntero
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
@@ -18,6 +18,41 @@ void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     lista = nuevoContacto;
 
     cout << "Contacto agregado correctamente " << endl;
+}
+
+// Funcion para eliminar contacto de la lista enlazada
+void eliminarContactoLista(Contacto* lista, string nombre) {
+    if (lista == nullptr) {
+        cout << "La lista esta vacida" << endl;
+        return;
+    }
+
+    Contacto* temp = lista; // Apunta al primer elemento
+    Contacto* previo = nullptr; // Puntero que apunta al nodo anterior de interes
+
+    // Caso donde el elemento a eliminar es el primero
+    if (temp != nullptr && temp->nombreLista == nombre) {
+        lista = temp->siguiente;
+        delete temp;
+        return;
+    }
+
+    // Iterar sobre los contactos a ver si esta el nombre ingresado
+    while (temp != nullptr && temp->nombreLista != nombre) {
+        previo = temp;
+        temp = temp->siguiente;
+    }
+
+    if (temp == nullptr) {
+        cout << "El nombre ingresado " << nombre << " no fue encontrado." << endl;
+        return;
+    }
+
+    previo->siguiente = temp->siguiente; // Actualizar el puntero para "brincarse" el que se quiere elminar
+
+    delete temp; // Liberar memoria
+
+    cout << "Se ha eliminado " << nombre << " existosamente." << endl;
 }
 
 void mostrarContactos(Contacto* lista) {
@@ -34,6 +69,7 @@ void mostrarContactos(Contacto* lista) {
     }
 }
 
+// Liberar la memoria de la lista enlazada una vez terminado el programa
 void liberarMemoria(Contacto*& lista) {
     // Revisar si hay otra lista a la cual apuntar
     // Eliminar lista para que no ocupe memoria, una vez que ya se haya usado la direccion esta guardado en temp
@@ -44,6 +80,7 @@ void liberarMemoria(Contacto*& lista) {
     }
 }
 
+    // Funciones del hash table:
 // Funcion para saber si la lista esta vacia
 bool HashTable::estaVacio() const{
     int sum{};
@@ -82,28 +119,6 @@ void HashTable::agregarElemento(int key, string value) {
     return;
 }
 
-// // Funcion para quitar contactos, se quita
-// void HashTable::quitarElemento(int key) {
-//     int hashValor = hashFunction(key);
-//     auto& cell = tabla[hashValor];
-//     auto iteradorInicio = begin(cell);
-//     bool keyExiste = false;
-//     for (; iteradorInicio != end(cell); iteradorInicio++) {
-//         if (iteradorInicio->first == key) {
-//             keyExiste = true;
-//             cell.erase(iteradorInicio);
-//             cout << "Se elimino el contacto." << endl;
-//             break;
-//         }
-//     }
-
-//     if (!keyExiste) {
-//         cout << "No se ha encontrado contacto con ese numero.";
-//     }
-//     return;
-// }
-
-// TEST TO DELETE WITH NAME
 // Funcion para quitar contactos, se quita
 void HashTable::quitarElemento(string nombreBorrar) {
     int keyBorrar{};
