@@ -82,10 +82,10 @@ int main() {
             case IMPRIMIR:
                 mostrarContactos(listaContactos); // Imprimir lista enlazada
                 HT.imprimirTabla(); // Imprimir hash table
-                imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;
             case MOSTRAR:
-                // FALTA ORDEN ALFABETICO
+                insertionSort(agenda, numContactos); // Ordenar alfabeticamente
+                imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;
             case SALIR:
                 cout << "Saliendo del programa... \n";

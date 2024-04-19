@@ -24,8 +24,6 @@ struct Contacto {
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre);
 void mostrarContactos(Contacto* lista);
 void eliminarContactoLista(Contacto* lista, string nombre);
-//void imprimirContactos();
-//void liberarMemoria(Contacto*& lista);
 
 // Clase utilizada para el hash table
 class HashTable {
@@ -43,10 +41,9 @@ class HashTable {
 };
 
         // Funciones para la memoria celular
-// Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
-void imprimirCel(ContactoCel* agenda, int numContactos);
-// Funcion que agregar contacto a la memoria de celular usando malloc()
-void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad);
+void imprimirCel(ContactoCel* agenda, int numContactos); // Para imprimir la memoria del celular
+void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad); // Funcion que agregar contacto a la memoria de celular usando malloc()
 void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorrar);
+void insertionSort(ContactoCel arreglo[], int n); // Algoritmo de ordenamiento para ordenar contactos por orden alfabetico
 
 #endif

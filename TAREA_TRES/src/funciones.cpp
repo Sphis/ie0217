@@ -55,6 +55,7 @@ void eliminarContactoLista(Contacto* lista, string nombre) {
     cout << "Se ha eliminado " << nombre << " existosamente." << endl;
 }
 
+// Funcion para mostrar los contactos de la lista enlazada
 void mostrarContactos(Contacto* lista) {
     if(lista == nullptr) {
         cout << "La libreria no tiene Contactos." << endl;
@@ -156,6 +157,7 @@ void HashTable::quitarElemento(string nombreBorrar) {
     return;
 }
 
+// Funcion para imprimir los contactos del hashtable
 void HashTable::imprimirTabla() {
     cout << endl << "Memoria cloud (hash table)" << endl;
     for (int i{}; i < hashGroups; i++) {
@@ -219,3 +221,20 @@ void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorra
     }
     cout << "No se encontro un contacto con ese nombre" << endl;
 }
+
+// Algoritmo para ordenar
+void insertionSort(ContactoCel arreglo[], int n) {
+    // Iterar sobre todos los elementos iniciando desde el segundo
+    for (int i = 1; i < n; ++i) {
+        ContactoCel copia = arreglo[i]; // Guardar una copia del elemento
+        int j = i - 1; // Indice del ultimo elemento de los elementos ordenados
+
+        // Revisar si estan ordenados, de ser asi se desplaza hacia la derecha
+        while (j >= 0 && strcmp(arreglo[j].nombreCel, copia.nombreCel) > 0) {
+            arreglo[j + 1] = arreglo[j];
+            --j;
+        }
+        arreglo[j + 1] = copia;
+    }
+}
+
