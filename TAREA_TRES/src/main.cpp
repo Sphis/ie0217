@@ -1,6 +1,6 @@
 /**
 * @file main.cpp
-* Archivo main donde se ejecutan las funciones o donde se hace el llamado de las clases y sus métodos.
+* Archivo main donde se ejecutan las funciones o donde se hace el llamado de las clases y sus métodos o estructuras.
 * También es donde se tiene el menú principal.
 */
 #include <iostream>
@@ -18,25 +18,25 @@ enum Operaciones {
 
 int main() {
     int opcion; ///< Opcion para el menu ingresado por el usuario
-    int numTelefono;
-    string nombre;
-    string opcion2; // Opcion para escoger eliminar contacto de cloud o celular
+    int numTelefono; ///< Número de teléfono usado para el contacto
+    string nombre; ///< Nombre del contacto
+    string opcion2; ///< Opcion para escoger eliminar contacto de cloud o celular
 
     // Para la lista enlazada
     Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
 
     // Variables para hashtable
     HashTable HT; // Crear el hash table
-    int key;
+    // int key; // Variable 
 
     // Variables para la memoria de celular (malloc)
-    int capacidad = 5; // Capacidad inicial (se pueden agregar 5 contactos), si se supera este valor la capacidad se duplica
-    int numContactos = 0; // Numero de contactos en la memoria de celular
-    int numCel = 0; // Numero de contactos en la memoria de celular
-    ContactoCel* agenda = (ContactoCel*)malloc(capacidad * sizeof(ContactoCel)); // Agenda seria el puntero que sostiene los contactos
-    char nombreCel[50]; // Esto significa que el usuario puede usar 99 caracteres para un nombre
+    int capacidad = 5; ///< Capacidad inicial (se pueden agregar 5 contactos), si se supera este valor la capacidad se duplica
+    int numContactos = 0; ///< Numero de contactos en la memoria de celular
+    int numCel = 0; ///< Numero de contactos en la memoria de celular
+    ContactoCel* agenda = (ContactoCel*)malloc(capacidad * sizeof(ContactoCel)); ///< Puntero que sostiene los contactos
+    char nombreCel[50]; // Esto significa que el usuario puede usar 49 caracteres para un nombre
 
-    // agenda es nullptr es porque hubo un fallo
+    // Si agenda es nullptr es porque hubo un fallo
     if (!agenda) { 
         cerr << "Hubo un fallo en la asignacion de memoria." << endl;
         exit(1); // Salir con error
@@ -60,7 +60,7 @@ int main() {
 
                 cout << "Ingrese el numero de telefono: " << endl;
                 cin >> numTelefono;
-                cin.ignore();
+                cin.ignore(); // Limpiar el buffer
 
                 memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
                 HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
@@ -84,6 +84,7 @@ int main() {
                 HT.imprimirTabla(); // Imprimir hash table
                 break;
             case MOSTRAR:
+                cout << "(Orden alfabetico)";
                 insertionSort(agenda, numContactos); // Ordenar alfabeticamente
                 imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;

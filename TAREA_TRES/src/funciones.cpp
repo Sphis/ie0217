@@ -1,3 +1,8 @@
+/**
+* @file funciones.cpp
+* Este archivo es donde se encuentran la lógica de todas las funciones dentro del problema.
+*/
+
 #include <iostream>
 #include "funciones.hpp"
 #include <list>
@@ -5,13 +10,16 @@
 
 using namespace std;
 
-        // Funciones de la lista enlazada:
-// Libro*& = Referencia de una variable tipo puntero
+// Funciones para la lista enlazada:
+/**
+ * Esta funcion se encarga de tomar la referencia del punter de la lista de contactos y
+ * modificarla para agregar un contacto usando su nombre y número de teléfono.
+ */
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
 
-    nuevoContacto->numeroTelefonoLista = numTelefono; // agregar telefono al contacto
-    nuevoContacto->nombreLista = nombre; // agregar nombre al contacto
+    nuevoContacto->numeroTelefonoLista = numTelefono; // Agregar telefono al contacto
+    nuevoContacto->nombreLista = nombre; // Agregar nombre al contacto
 
     nuevoContacto->siguiente = lista; // Agregar el nuevo Contacto
 
@@ -20,8 +28,12 @@ void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     cout << "Contacto agregado correctamente " << endl;
 }
 
-// Funcion para eliminar contacto de la lista enlazada
-void eliminarContactoLista(Contacto* lista, string nombre) {
+
+/**
+ * Funcion que toma un nombre ingresado por el usuario para eliminar contacto de
+ * la lista enlazada.
+*/
+void eliminarContactoLista(Contacto*& lista, string nombre) {
     if (lista == nullptr) {
         cout << "La lista esta vacida" << endl;
         return;
@@ -55,7 +67,10 @@ void eliminarContactoLista(Contacto* lista, string nombre) {
     cout << "Se ha eliminado " << nombre << " existosamente." << endl;
 }
 
-// Funcion para mostrar los contactos de la lista enlazada
+
+/**
+ * Funcion para mostrar los contactos de la lista enlazada.
+*/
 void mostrarContactos(Contacto* lista) {
     if(lista == nullptr) {
         cout << "La libreria no tiene Contactos." << endl;
@@ -70,7 +85,9 @@ void mostrarContactos(Contacto* lista) {
     }
 }
 
-// Liberar la memoria de la lista enlazada una vez terminado el programa
+/**
+ * Funcion para liberar la memoria de la lista enlazada una vez terminado el programa.
+*/
 void liberarMemoria(Contacto*& lista) {
     // Revisar si hay otra lista a la cual apuntar
     // Eliminar lista para que no ocupe memoria, una vez que ya se haya usado la direccion esta guardado en temp
@@ -81,8 +98,10 @@ void liberarMemoria(Contacto*& lista) {
     }
 }
 
-    // Funciones del hash table:
-// Funcion para saber si la lista esta vacia
+// Funciones del hash table:
+/**
+ * Funcion para saber si la lista esta vacia.
+*/
 bool HashTable::estaVacio() const{
     int sum{};
     for (int i{}; i < hashGroups; i++) {
@@ -95,11 +114,17 @@ bool HashTable::estaVacio() const{
     return false; // No esta vacida
 }
 
+/**
+ * Funcion hash para encargada de crear una llaves a partir del número de teléfono.
+*/
 int HashTable::hashFunction(int key) {
     return key % hashGroups; // En este caso si llega 905, la funcion devuelve 5, este seria el key.
 }
 
-// Funcion para agregar contactos nuevos
+
+/**
+ * Funcion para agregar contactos nuevos al hash table.
+*/
 void HashTable::agregarElemento(int key, string value) {
     int hashValor = hashFunction(key); // Calcular el key
     auto& cell = tabla[hashValor];
@@ -120,7 +145,9 @@ void HashTable::agregarElemento(int key, string value) {
     return;
 }
 
-// Funcion para quitar contactos, se quita
+/**
+ * Funcion para eliminar contactos del hash table basado en un nombre que ingresa el usuario.
+*/
 void HashTable::quitarElemento(string nombreBorrar) {
     int keyBorrar{};
     // Primero buscar el key con el nombre
@@ -157,7 +184,9 @@ void HashTable::quitarElemento(string nombreBorrar) {
     return;
 }
 
-// Funcion para imprimir los contactos del hashtable
+/**
+ * Funcion para imprimir los contactos del hashtable
+*/
 void HashTable::imprimirTabla() {
     cout << endl << "Memoria cloud (hash table)" << endl;
     for (int i{}; i < hashGroups; i++) {
@@ -171,8 +200,10 @@ void HashTable::imprimirTabla() {
     return;
 }
 
-        // Funciones para la memoria de celular
-// Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
+// Funciones para la memoria de celular:
+/**
+ * Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado.
+*/
 void imprimirCel(ContactoCel* agenda, int numContactos) {
     // Imprimir contactos de la memoria de celular
     cout << "\nMemoria Celular (malloc):\n";
@@ -181,7 +212,9 @@ void imprimirCel(ContactoCel* agenda, int numContactos) {
     }
 }
 
-// Funcion que agregar contacto a la memoria de celular usando malloc()
+/**
+ * Funcion que agrega contactos a la memoria de celular usando malloc().
+*/
 void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad) {
     // Esto es para ver si se ha superado la capacidad, si es asi, solicitar mas memoria
     if (numContactos >= capacidad) {
@@ -207,6 +240,10 @@ void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char*
     ++numContactos; // Se agrego un contacto
 }
 
+/**
+ * Función que elimina los contactos de la agenda basado en un nombre ingresado por el usuario
+ * de la memoria celular (malloc).
+*/
 void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorrar) {
     for (int k = 0; k < numContactos; ++k) {
         if (agenda[k].nombreCel == nombreBorrar) {
@@ -222,7 +259,9 @@ void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorra
     cout << "No se encontro un contacto con ese nombre" << endl;
 }
 
-// Algoritmo para ordenar
+/**
+ * Algoritmo de insertion sort para ordenar alfabéticamente el nombre de los contactos 
+*/
 void insertionSort(ContactoCel arreglo[], int n) {
     // Iterar sobre todos los elementos iniciando desde el segundo
     for (int i = 1; i < n; ++i) {

@@ -1,3 +1,8 @@
+/**
+* @file funciones.hpp
+* Archivo donde se encuentran declaraciones de las clases, las estructuras utilizada y las funciones.
+*/
+
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP
 
@@ -23,7 +28,7 @@ struct Contacto {
         // Funciones de lista enlazada
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre);
 void mostrarContactos(Contacto* lista);
-void eliminarContactoLista(Contacto* lista, string nombre);
+void eliminarContactoLista(Contacto*& lista, string nombre);
 
 // Clase utilizada para el hash table
 class HashTable {
