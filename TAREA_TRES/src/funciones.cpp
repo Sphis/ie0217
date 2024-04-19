@@ -5,7 +5,7 @@
 
 using namespace std;
 
-        // Funciones de la lista:
+        // Funciones de la lista enlazada:
 // Libro*& = Referencia de una variable tipo puntero
 void agregarContacto(Contacto*& lista, int numTelefono, string nombre) {
     Contacto* nuevoContacto = new Contacto; // Pedir memoria dinamica para guardar un contacto
@@ -61,10 +61,10 @@ void mostrarContactos(Contacto* lista) {
         return; // Para que se salga de funcion
     }
 
-    cout << "Lista de Contactos: " << endl;
+    cout << "Memoria cloud (lista enlazada): " << endl;
     while (lista != nullptr) {
-        cout << "Nombre: " << lista->nombreLista << endl;
-        cout << "Telefono: " << lista->numeroTelefonoLista << endl;
+        cout << "Nombre: " << lista->nombreLista;
+        cout << " Telefono: " << lista->numeroTelefonoLista << endl;
         lista = lista->siguiente;
     }
 }
@@ -129,7 +129,6 @@ void HashTable::quitarElemento(string nombreBorrar) {
         auto iteradorInicio = tabla[i].begin();
         for (; iteradorInicio != tabla[i].end(); iteradorInicio++) {
             if (iteradorInicio->second == nombreBorrar) {
-                cout << "Numero de telefono: " << iteradorInicio->first << " Nombre: " << iteradorInicio->second << endl;
                 keyBorrar = iteradorInicio->first;
                 break;
             }
@@ -158,6 +157,7 @@ void HashTable::quitarElemento(string nombreBorrar) {
 }
 
 void HashTable::imprimirTabla() {
+    cout << endl << "Memoria cloud (hash table)" << endl;
     for (int i{}; i < hashGroups; i++) {
         if (tabla[i].size() == 0) continue;
 
@@ -173,7 +173,7 @@ void HashTable::imprimirTabla() {
 // Para imprimir la memoria del celular, esto solo para ver que esta funcionando, pero no lo pide el enunciado
 void imprimirCel(ContactoCel* agenda, int numContactos) {
     // Imprimir contactos de la memoria de celular
-    cout << "\nAgenda:\n";
+    cout << "\nMemoria Celular (malloc):\n";
     for (int k = 0; k < numContactos; ++k) {
         cout << "Nombre: " << agenda[k].nombreCel << ", Numero de telefono: " << agenda[k].numTelefono << endl;
     }
@@ -199,18 +199,13 @@ void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char*
     }
     strcpy(agenda[numContactos].nombreCel, nombreCel); // Copiar lo ingresado al nombre del stuct
 
-    // Set phone number
+    // Asignar numero de telefono
     agenda[numContactos].numTelefono = numTelefono;
 
     ++numContactos; // Se agrego un contacto
 }
 
-void eliminarContacto(ContactoCel* agenda, int& numContactos) {
-    string nombreCel;
-    string nombreBorrar;
-    cout << "Digite el nombre del usuario que desea borrar" << endl;
-    cin >> nombreBorrar;
-
+void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorrar) {
     for (int k = 0; k < numContactos; ++k) {
         if (agenda[k].nombreCel == nombreBorrar) {
             free(agenda[k].nombreCel); // Borrar el nombre
@@ -218,6 +213,7 @@ void eliminarContacto(ContactoCel* agenda, int& numContactos) {
             agenda[k] = agenda[numContactos - 1];
 
             --numContactos; // Reducir numero de contactos
+            cout << "Se ha eliminado " << nombreBorrar << " exitosamente del cloud (lista enlazada)." << endl;
             return;
         }
     }

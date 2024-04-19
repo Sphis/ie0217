@@ -47,6 +47,6 @@ class HashTable {
 void imprimirCel(ContactoCel* agenda, int numContactos);
 // Funcion que agregar contacto a la memoria de celular usando malloc()
 void memCel(ContactoCel* agenda, int& numContactos, int numTelefono, const char* nombreCel, int capacidad);
-void eliminarContacto(ContactoCel* agenda, int& numContactos);
+void eliminarContacto(ContactoCel* agenda, int& numContactos, string nombreBorrar);
 
 #endif

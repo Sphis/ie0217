@@ -20,6 +20,7 @@ int main() {
     int opcion; ///< Opcion para el menu ingresado por el usuario
     int numTelefono;
     string nombre;
+    string opcion2; // Opcion para escoger eliminar contacto de cloud o celular
 
     // Para la lista enlazada
     Contacto* listaContactos = nullptr; // Inicialmente no hay contactos
@@ -61,22 +62,27 @@ int main() {
                 cin >> numTelefono;
                 cin.ignore();
 
-                // memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
-                // HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
+                memCel(agenda, numContactos, numTelefono, nombreCel, capacidad); // Agregar contacto al celular
+                HT.agregarElemento(numTelefono, nombre); // Agregar contacto al hash table
                 agregarContacto(listaContactos, numTelefono, nombre); // Agregar contacto a la lista enlazada
                 break;
             }
             case ELIMINAR:
                 cout << "Digite el nombre del contacto que desea eliminar." << endl;
                 cin >> nombre;
-                // HT.quitarElemento(nombre); // Eliminar contacto del hash table
-                // eliminarContacto(agenda, numContactos); // Elminar contacto de la memoria celular
-                eliminarContactoLista(listaContactos, nombre);
+                cout << "Digite de que memoria (celular o cloud) quiere borrar el contacto." << endl;
+                cin >> opcion2;
+                if (opcion2 == "celular") {
+                    eliminarContacto(agenda, numContactos, nombre); // Elminar contacto de la memoria celular
+                } else {
+                    HT.quitarElemento(nombre); // Eliminar contacto del hash table
+                    eliminarContactoLista(listaContactos, nombre); // Eliminar contacto de la lista enlazada
+                }
                 break;
             case IMPRIMIR:
                 mostrarContactos(listaContactos); // Imprimir lista enlazada
-                // HT.imprimirTabla(); // Imprimir hash table
-                // imprimirCel(agenda, numContactos); // Imprimir memoria celular
+                HT.imprimirTabla(); // Imprimir hash table
+                imprimirCel(agenda, numContactos); // Imprimir memoria celular
                 break;
             case MOSTRAR:
                 // FALTA ORDEN ALFABETICO
