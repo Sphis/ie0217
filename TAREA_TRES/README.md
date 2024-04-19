@@ -1,4 +1,14 @@
 # Instrucciones de ejecución
+Para compilar el programa se usa el siguiente commando:
+```
+g++ -o agenda.exe .\main.cpp .\funciones.cpp
+```
+Seguidamente para ejecutarlo se usa:
+```
+.\agenda.exe
+```
+# Dirección del doxygen
+https://tarea3b91519.netlify.app/
 
 # Parte teórica
 **1. ¿Qué es un algoritmo y cuáles son sus características principales?**
@@ -116,6 +126,7 @@ https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
 
 **21. Explique la diferencia entre la notación Big O (O) y la notación Omega () en el análisis de la complejidad temporal de los algoritmos. Proporciona un ejemplo de un algoritmo y determina su complejidad temporal utilizando ambas notaciones Big O y Omega.**
 
-La notación **Big-O** representa el límite superior del tiempo de ejecución de un algoritmo.
-Por tanto, proporciona la complejidad del peor de los casos de un algoritmo. Por otro lado la notación **omega** representa el límite inferior del tiempo de ejecución de un algoritmo.
-Por lo tanto, proporciona el mejor caso de complejidad de un algoritmo.
+La notación **Big-O** representa el límite superior del tiempo de ejecución de un algoritmo, por tanto, proporciona la complejidad del peor de los casos de un algoritmo. Por otro lado la notación **omega** representa el límite inferior del tiempo de ejecución de un algoritmo.
+
+Un ejemplo de un algoritmo sería el merge sort, que divide la lista recursivamente hasta que ya no pueda ser dividida. Para este algoritmo se tiene que la duración del peor caso de un merge sort (es decir, Big O) es de  O(n log n) donde n  es el número de elementos en la lista, es decir, este algorimtmo es eficiente para un conjunto grande de elementos. Para la duración del mejor de los casos (notación Omega) sería, (n log n), esto porque este algoritmo siempre está dividiendo el arreglo a la mitad y combina las mitades que ya están ordenadas.
+https://www.geeksforgeeks.org/merge-sort/
