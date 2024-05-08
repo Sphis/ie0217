@@ -27,21 +27,15 @@ int main() {
     cin >> columnasB;
 
 
-    Matriz matrizA(filasA, columnasA, 0.0);
+    Matriz matrizA(filasA, columnasA, 0);
     matrizA.setDimensiones(filasA, columnasA);
     matrizA.llenarMatriz();
     matrizA.print();
 
     Matriz matrizB(filasB, columnasB, 0.0);
-    matrizB.setDimensiones(filasA, columnasA);
+    matrizB.setDimensiones(filasB, columnasB);
     matrizB.llenarMatriz();
     matrizB.print();
-
-    Matriz matrizC = matrizA + matrizB;
-    matrizC.print();
-
-    cout << "Ingrese el tipo de operacion: (Suma, Resta o Multiplicacion)";
-    cin >> operacion;
 
     do {
         cout << "Selecciona su opcion: " << endl;
@@ -56,10 +50,26 @@ int main() {
                 
                 break;
             case MOSTRAR_MATRICES:
-            
+                matrizA.print();
+                matrizB.print();
                 break;
             case OPERACION:
-            
+                cout << "Ingrese el tipo de operacion: (suma, resta o multiplicacion)" << endl;
+                cin >> operacion;
+                while (operacion != "suma" && operacion != "resta" && operacion != "multiplicacion"){
+                    cout << "Debe ingresar una de las opciones: (suma, resta o multiplicacion)";
+                    cin >> operacion;
+                }
+                if (operacion == "suma") {
+                    Matriz matrizC = matrizA + matrizB;
+                    matrizC.print();
+                } else if (operacion == "resta") {
+                    Matriz matrizC = matrizA - matrizB;
+                    matrizC.print();
+                } else if (operacion == "multiplicacion") {
+                    Matriz matrizC = matrizA * matrizB;
+                    matrizC.print();
+                }
                 break;
             case SALIR:
                 cout << "Saliendo del programa..." << endl;
