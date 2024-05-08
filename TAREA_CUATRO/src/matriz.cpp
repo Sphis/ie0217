@@ -26,7 +26,7 @@ Matriz::~Matriz(){
 }
 
 // Método para establecer las dimensiones de la matriz
-void setDimensiones(int filas, int columnas) {
+void Matriz::setDimensiones(int filas, int columnas) {
     if (filas <= 0 || columnas <= 0) {
         throw std::invalid_argument("Las dimensiones de la matriz deben ser mayores que cero.");
     }
@@ -51,6 +51,9 @@ void Matriz::llenarMatriz() {
 
 // Suma de matrices
 Matriz Matriz::operator+(Matriz &B){
+    if (filasMatriz != B.filasMatriz || columnasMatriz != B.columnasMatriz){
+        throw std::invalid_argument("Error: Las matrices no tienen las mismas dimensiones.");
+    }
     Matriz suma(columnasMatriz, filasMatriz, 0.0);
     unsigned i,j;
     for (i = 0; i < filasMatriz; i++)
@@ -65,6 +68,9 @@ Matriz Matriz::operator+(Matriz &B){
 
 // Resta de matrices
 Matriz Matriz::operator-(Matriz & B){
+    if (filasMatriz != B.filasMatriz || columnasMatriz != B.columnasMatriz){
+        throw std::invalid_argument("Error: Las matrices no tienen las mismas dimensiones.");
+    }
     Matriz resta(columnasMatriz, filasMatriz, 0.0);
     unsigned i,j;
     for (i = 0; i < filasMatriz; i++)
@@ -80,7 +86,7 @@ Matriz Matriz::operator-(Matriz & B){
 
 // Multiplicacion
 Matriz Matriz::operator*(Matriz & B){
-    Matriz multiplicacion(filasMatriz,B.getCols(),0.0);
+    Matriz multiplicacion(filasMatriz, B.getCols(), 0.0);
     if(columnasMatriz == B.getRows())
     {
         unsigned i, j, k;
@@ -95,15 +101,13 @@ Matriz Matriz::operator*(Matriz & B){
                     temp += m_matrix[i][k] * B(k,j);
                 }
                 multiplicacion(i,j) = temp;
-                //cout << multiplicacion(i,j) << " ";
             }
-            //cout << endl;
         }
         return multiplicacion;
     }
     else
     {
-        cout << "Error";
+        throw std::invalid_argument("Error: Las matrices no tienen dimensiones compatibles para la multiplicación.");
     }
 }
 

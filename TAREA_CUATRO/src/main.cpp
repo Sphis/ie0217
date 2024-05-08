@@ -16,22 +16,29 @@ int main() {
     int filasA, columnasA, filasB, columnasB;
     string operacion;
 
-    Matriz myMatrix(2, 2, 0.0);
-    myMatrix.llenarMatriz();
-
-    myMatrix.print();
-
     cout << "Ingrese el numero de filas de la matriz A: ";
     cin >> filasA;
-
     cout << "Ingrese el numero de columnas de la matriz A: ";
     cin >> columnasA;
 
     cout << "Ingrese el numero de filas de la matriz B: ";
     cin >> filasB;
-
     cout << "Ingrese el numero de columnas de la matriz B: ";
     cin >> columnasB;
+
+
+    Matriz matrizA(filasA, columnasA, 0.0);
+    matrizA.setDimensiones(filasA, columnasA);
+    matrizA.llenarMatriz();
+    matrizA.print();
+
+    Matriz matrizB(filasB, columnasB, 0.0);
+    matrizB.setDimensiones(filasA, columnasA);
+    matrizB.llenarMatriz();
+    matrizB.print();
+
+    Matriz matrizC = matrizA + matrizB;
+    matrizC.print();
 
     cout << "Ingrese el tipo de operacion: (Suma, Resta o Multiplicacion)";
     cin >> operacion;
