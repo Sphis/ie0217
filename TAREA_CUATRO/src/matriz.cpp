@@ -32,6 +32,21 @@ void setDimensiones(int filas, int columnas) {
     }
 }
 
+// Función para asignar valores a elementos de la matriz
+void Matriz::llenarMatriz() {
+    int valor;
+    std::cout << "Ingrese los elementos de la matriz:" << std::endl;
+    for (unsigned i = 0; i < filasMatriz; ++i) {
+        for (unsigned j = 0; j < columnasMatriz; ++j) {
+            std::cout << "Elemento (" << i << ", " << j << "): ";
+            if (!(std::cin >> valor)) {
+                throw std::runtime_error("Error: Se esperaba un valor del tipo adecuado.");
+            }
+            m_matrix[i][j] = valor;
+        }
+    }
+}
+
 ////////////////////////////////////////
 
 // Suma de matrices

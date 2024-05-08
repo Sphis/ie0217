@@ -16,6 +16,11 @@ int main() {
     int filasA, columnasA, filasB, columnasB;
     string operacion;
 
+    Matriz myMatrix(2, 2, 0.0);
+    myMatrix.llenarMatriz();
+
+    myMatrix.print();
+
     cout << "Ingrese el numero de filas de la matriz A: ";
     cin >> filasA;
 
