@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * En este archivo es donde se ejecuta lo necesario para que el usuario pueda realizar operaciones matriciales, para ello se le solicita que ingrese
+ * algunos parametros y basado en estos datos se generan las matrices.
+*/
 #include "matriz.h"
 #include <iostream>
 

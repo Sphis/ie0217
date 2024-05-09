@@ -1,7 +1,18 @@
+/**
+ * @file matriz.cpp
+ * Este archivo contiene las implementaciones de los metodos, usado para la clase y es donde esta la logica para realizar la operaciones matriciales
+ * junto con algunas excecepciones.
+*/
+
 #include "matriz.h"
 using namespace std;
 
-// Constructor para la matriz
+/**
+ * Constructor para la matriz
+ * @param[in] filaTamano
+ * @param[in] columnaTamano
+ * @param[in] valoresIni
+*/
 Matriz::Matriz(unsigned filaTamano, unsigned columnaTamano, double valoresIni){
     filasMatriz = filaTamano;
     columnasMatriz = columnaTamano;
@@ -21,18 +32,24 @@ Matriz::Matriz(const Matriz &B)
 }
 
 // Descontructor
-Matriz::~Matriz(){
-
-}
+Matriz::~Matriz(){}
 
 // Método para establecer las dimensiones de la matriz
+/**
+ * Encargado de verificar que las filas y columnas son validas
+ * @param[in] filas
+ * @param[in] columnas
+*/
 void Matriz::setDimensiones(int filas, int columnas) {
     if (filas <= 0 || columnas <= 0) {
         throw std::invalid_argument("Las dimensiones de la matriz deben ser mayores que cero.");
     }
 }
 
-// Función para asignar valores a elementos de la matriz
+/**
+ * Función para asignar valores a elementos de la matriz basado en el
+ * input del usuario
+*/
 void Matriz::llenarMatriz() {
     int valor;
     std::cout << "Ingrese los elementos de la matriz:" << std::endl;
@@ -47,9 +64,10 @@ void Matriz::llenarMatriz() {
     }
 }
 
-////////////////////////////////////////
-
-// Suma de matrices
+/**
+ * Sobrecarga de operador suma
+ * @param[in] &B
+*/
 Matriz Matriz::operator+(Matriz &B){
     if (filasMatriz != B.filasMatriz || columnasMatriz != B.columnasMatriz){
         throw std::invalid_argument("Error: Las matrices no tienen las mismas dimensiones.");
@@ -66,8 +84,11 @@ Matriz Matriz::operator+(Matriz &B){
     return suma;
 }
 
-// Resta de matrices
-Matriz Matriz::operator-(Matriz & B){
+/**
+ * Sobrecarga de operador resta
+ * @param[in] &B
+*/
+Matriz Matriz::operator-(Matriz &B){
     if (filasMatriz != B.filasMatriz || columnasMatriz != B.columnasMatriz){
         throw std::invalid_argument("Error: Las matrices no tienen las mismas dimensiones.");
     }
@@ -84,8 +105,11 @@ Matriz Matriz::operator-(Matriz & B){
     return resta;
 }
 
-// Multiplicacion
-Matriz Matriz::operator*(Matriz & B){
+/**
+ * Sobrecarga de operador multiplicacion
+ * @param[in] &B
+*/
+Matriz Matriz::operator*(Matriz &B){
     Matriz multiplicacion(filasMatriz, B.getCols(), 0.0);
     if(columnasMatriz == B.getRows())
     {
@@ -110,26 +134,36 @@ Matriz Matriz::operator*(Matriz & B){
         throw std::invalid_argument("Error: Las matrices no tienen dimensiones compatibles para la multiplicación.");
     }
 }
-
-// Para retorna el valor de un elemento del arreglo de la forma A(x,y)
-double& Matriz::operator()(const unsigned &rowNo, const unsigned & colNo)
+ 
+/**
+ * Sobre carga de operador para poder retornar el valor de un elemento del arreglo de la forma A(x,y)
+ * @param[in] &rowNo
+ * @param[in] &colNo
+*/
+double& Matriz::operator()(const unsigned &rowNo, const unsigned &colNo)
 {
     return this->m_matrix[rowNo][colNo];
 }
 
-// Returna cantidad de filas
+/**
+ * Returna la cantidad de filas
+*/
 unsigned Matriz::getRows() const
 {
     return this->filasMatriz;
 }
 
-// Returna cantidad de columnas
+/**
+ * Returna la cantidad de columnas
+*/
 unsigned Matriz::getCols() const
 {
     return this->columnasMatriz;
 }
 
-// Imprimir la matriz
+/**
+ * Imprime la matriz
+*/
 void Matriz::print() const
 {
     cout << "Matriz: " << endl;

@@ -1,3 +1,8 @@
+/**
+ * @file matriz.h
+ * Aqui es donde van todos los prototipos de las funciones, clases, metodos utilizados para este programa.
+*/
+
 #ifndef __TAREA_CUATRO__
 #define __TAREA_CUATRO__
 
