@@ -1,5 +1,12 @@
 # Instrucciones de ejecución
-
+Para compilar el programa se puede utilizar el siguiente comando:
+```
+g++ -o tareaCuatro.exe .\main.cpp .\matriz.cpp
+```
+Simplemente recuerde estar en la ruta correcta para hacerlo. Una vez compilado simplemente se ejecuta usando:
+```
+.\tareaCuatro.exe
+```
 # Parte teórica
 ### Templates
 1. Definición de Templates: Explique el concepto de plantillas en C++ y proporcione un ejemplo simple.
