@@ -13,17 +13,58 @@ public:
 
 class ExcepcionNombre : public ExcepcionCorreo {
 public:
-    explicit ExcepcionNombre(const string& message) : ExcepcionCorreo("Nombre inválido: " + message) {}
+    explicit ExcepcionNombre(const string& message) : ExcepcionCorreo("Nombre invalido: " + message) {}
 };
 
 class ExcepcionDominio : public ExcepcionCorreo {
 public:
-    explicit ExcepcionDominio(const string& message) : ExcepcionCorreo("Dominio inválido: " + message) {}
+    explicit ExcepcionDominio(const string& message) : ExcepcionCorreo("Dominio invalido: " + message) {}
 };
 
 class ExcepcionExtension : public ExcepcionCorreo {
 public:
-    explicit ExcepcionExtension(const string& message) : ExcepcionCorreo("Extensión inválida: " + message) {}
+    explicit ExcepcionExtension(const string& message) : ExcepcionCorreo("Extensión invalida: " + message) {}
+};
+
+class ValidadorEmail {
+public:
+    void validarCorreo(const string& correo) {
+        // Primero se busca si hay y en donde está el @
+        size_t atPos = correo.find('@');
+        // En este caso no se encontró @
+        if (atPos == string::npos) {
+            throw ExcepcionCorreo("La direccion de correo electronico debe tener un '@'");
+        }
+
+        string nombre = correo.substr(0, atPos); // Guardar el nombre haciendo un slice (antes del @)
+        string dominioYExtension = correo.substr(atPos + 1); // Guardar el dominio y la extension
+
+        // Verificar que tenga un punto (para el dominio)
+        size_t dotPos = dominioYExtension.rfind('.');
+        if (dotPos == string::npos) {
+            throw ExcepcionDominio("El dominio debe tener al menos un punto '.'");
+        }
+
+        string dominio = dominioYExtension.substr(0, dotPos); // Guardar el dominio (antes del punto)
+        string extension = dominioYExtension.substr(dotPos + 1); // Guardar la extension (despues del punto)
+
+        validarNombre(nombre);
+        validarDominio(dominio);
+        validarExtension(extension);
+    }
+
+private:
+    void validarNombre(const string& nombre) {
+        // Para validar el nombre (antes del @)
+    }
+
+    void validarDominio(const string& dominio) {
+        // Para validar el dominio (despues del @)
+    }
+
+    void validarExtension(const string& extension) {
+        // Para validar la extension (despues del punto)
+    }
 };
 
 int main() {
@@ -49,7 +90,7 @@ int main() {
                 break;
 
             default:
-                cout << "Opcion no válida. Intente de nuevo.\n";
+                cout << "Opcion no valida. Intente de nuevo.\n";
                 break;
         }
     } while (opcion != 2);
