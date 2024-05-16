@@ -9,8 +9,11 @@ Para compilar el código para esta tarea se utiliza un Makefile. Para que funcio
 
 `mingw32-make build` Este comando compila el código fuente y genera un ejecutable llamado tarea5.x.
 
+# Doxygen
+El link de la página se encuentra en la siguiente dirección:
+https://tareacincoie0217.netlify.app/
 
-# Parte teórico
+# Parte teórica
 1. ¿Qué es una expresión regular y cuál es su propósito en programación?
 
 Las expresiones regulares (también conocidas como regex o regexp) son patrones utilizados para buscar y manipular cadenas de texto
