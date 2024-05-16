@@ -5,6 +5,27 @@
 
 using namespace std;
 
+// Excepciones
+class ExcepcionCorreo : public runtime_error {
+public:
+    explicit ExcepcionCorreo(const string& message) : runtime_error(message) {}
+};
+
+class ExcepcionNombre : public ExcepcionCorreo {
+public:
+    explicit ExcepcionNombre(const string& message) : ExcepcionCorreo("Nombre inválido: " + message) {}
+};
+
+class ExcepcionDominio : public ExcepcionCorreo {
+public:
+    explicit ExcepcionDominio(const string& message) : ExcepcionCorreo("Dominio inválido: " + message) {}
+};
+
+class ExcepcionExtension : public ExcepcionCorreo {
+public:
+    explicit ExcepcionExtension(const string& message) : ExcepcionCorreo("Extensión inválida: " + message) {}
+};
+
 int main() {
     string correo;
     int opcion;
