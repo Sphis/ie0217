@@ -45,7 +45,7 @@ public:
 */
 class ExcepcionExtension : public ExcepcionCorreo {
 public:
-    explicit ExcepcionExtension(const string& message) : ExcepcionCorreo("Extensión invalida: " + message) {}
+    explicit ExcepcionExtension(const string& message) : ExcepcionCorreo("Extension invalida: " + message) {}
 };
 
 /**

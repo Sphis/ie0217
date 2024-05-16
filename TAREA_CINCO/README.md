@@ -1,4 +1,14 @@
 # Instrucciones de ejecución
+Para compilar el código para esta tarea se utiliza un Makefile. Para que funcione de forma correcta debe estar ubicado en la carpeta de `TAREA_CINCO`, seguidamente se pueden ejecutar los siguientes comandos:
+
+`mingw32-make all` Este comando compila y corre el programa.
+
+`mingw32-make run` Este comando es para ejecutar el programa.
+
+`mingw32-make clean` Este comando es para limpiar los arcivos ejecutables (los .exe). Tenga en cuenta que después de ejecutar este comando, hay que seleccionar la opción `Y` para confirmar.
+
+`mingw32-make build` Este comando compila el código fuente y genera un ejecutable llamado tarea5.x.
+
 
 # Parte teórico
 1. ¿Qué es una expresión regular y cuál es su propósito en programación?
