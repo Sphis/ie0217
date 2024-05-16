@@ -114,4 +114,4 @@ Un ejemplo sencillo se puede realizar de la siguiente forma:
 %.o: %.cpp
     g++ -c $< -o $@
 ```
-Donde los caracteres especiales `$<` y `$@` representan el primer requisito y el target de la regla actual respectivamente. En este caso entonces, `$<` representa que los archivos .cpp son los requisitos mientras que `$@` son los targets.
+Donde los caracteres especiales `$<` y `$@` representan el primer requisito y el target de la regla actual respectivamente. En este caso entonces, `$<` representa que los archivos .cpp son los requisitos mientras que `$@` .o son los targets.
