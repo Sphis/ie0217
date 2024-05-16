@@ -3,7 +3,6 @@
  * Este archivo contiene las implementaciones de la clase y sus metodos, lógica del programa y también es donde se encuentra el manejo
  * de exepciones.
 */
-
 #include "email.hpp"
 
 void ValidadorEmail::validarCorreo(const string& correo) {

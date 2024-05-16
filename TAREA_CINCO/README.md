@@ -115,3 +115,46 @@ Un ejemplo sencillo se puede realizar de la siguiente forma:
     g++ -c $< -o $@
 ```
 Donde los caracteres especiales `$<` y `$@` representan el primer requisito y el target de la regla actual respectivamente. En este caso entonces, `$<` representa que los archivos .cpp son los requisitos mientras que `$@` .o son los targets.
+
+# Parte teórica (Makefile)
+1. ¿Qué suelen contener las variables CC, CFLAGS, CXXFLAGS y LDFLAGS en un Makefile?
+- CC: El compilador que se va a usar (ej: g++).
+- CFLAGS: Similar a CXXFLAGS, son opciones de compilación, pero en este caso es para los archivos fuente en C.
+- CXXFLAGS: Opciones de compilación para C++, por ejemplo, `CXXFLAGS = -Wall -std=c++11` indica enseñar todos los warnings a la hora de compilar y qué versión del compilador usar (en este caso c++11). 
+- LDFLAGS: Esto es una opción para el linker y son pasados al compilador automáticamente cuando el compilador lo llama. Es común para especificar dónde se pueden encontrar los directorios de ciertas librerías.
+
+https://earthly.dev/blog/make-flags/
+
+2. ¿De qué se compone una regla en un Makefile?
+
+Las reglas son instrucciones que dicen cómo crear un target a partir de un conjunto de archivos fuente. Cada regla consta de tres
+partes: un target, una lista de dependencias y comandos para construir el target
+
+3. Defina qué es un target y cómo se relaciona con sus prerequisitos.
+
+Los targets son los resultados que se desean obtener al ejecutar el Makefile. Por ejemplo, un target podría ser compilar un programa o
+limpiar archivos generados previamente. Los targets son las reglas que definirás en tu Makefile. Los prerequisitos son los archivos necesarios para generar un target.
+
+4. ¿Para qué se utiliza la bandera -I, -c y -o del compilador gcc?
+
+- `-o`: Usado para indicar el nombre del archivo de salida.
+- `-I`: Para especificar la ruta de inclusión de los archivos de encabezados.
+- `-c`: Para indicar realizar una compilación sin enlazar.
+
+https://linuxhandbook.com/gcc-flags/
+
+5. ¿Cómo se definen y se utilizan las variables en un Makefile? ¿Qué utilidad tienen?
+
+Las variables se declaran como ``VARIABLE = valor`, se referencian dentro del mismo make usando el símbolo `$` (por ejemplo, $(VARIABLE)).
+Son útiles para no repetir código, además hace que el código sea más fácil de mantener y modificar ya que, no hay que cambiar partes del código, sino que solo el valor de la variable.
+
+6. ¿Qué utilidad tiene un @ en un Makefile?
+
+Se usa para no imprimir comandos, ejemplos, si tengo `@echo "compiling"` esto significa que la terminal no va a mostrar `compiling`. 
+
+https://anukulverma.wordpress.com/2022/08/14/makefile-symbols/
+
+7. ¿Para qué se utiliza .PHONY en un Makefile?
+
+Los phony targets son targets que no representan archivos físicos, sino acciones que deben realizarse. Por ejemplo, clean es un phony
+target clásico que se utiliza para eliminar archivos generados.
