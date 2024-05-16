@@ -67,7 +67,18 @@ private:
     }
 
     void validarDominio(const string& dominio) {
-        // Para validar el dominio (despues del @)
+        // Para validar el dominio (despues del @, pero antes del punto)
+        regex dominioRegex("^[a-zA-Z]+(\\.[a-zA-Z]+)*$");
+        // Casos de acuerdo al enunciado
+        if (!regex_match(dominio, dominioRegex)) {
+            throw ExcepcionDominio("Debe contener únicamente letras y puntos. El punto no puede estar al inicio ni al final.");
+        }
+        if (dominio.length() < 3 || dominio.length() > 30) {
+            throw ExcepcionDominio("Debe tener entre 3 y 30 caracteres excluyendo los puntos.");
+        }
+        if (dominio.find("..") != string::npos) {
+            throw ExcepcionDominio("No debe contener segmentos consecutivos separados por un único punto.");
+        }
     }
 
     void validarExtension(const string& extension) {
