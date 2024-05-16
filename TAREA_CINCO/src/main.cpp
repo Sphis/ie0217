@@ -56,6 +56,14 @@ public:
 private:
     void validarNombre(const string& nombre) {
         // Para validar el nombre (antes del @)
+        regex nombreRegex("^[a-zA-Z0-9][a-zA-Z0-9._-]{0,13}[a-zA-Z0-9]$");
+        if (!regex_match(nombre, nombreRegex)) {
+            throw ExcepcionNombre("Debe contener letras, números, puntos, guiones o guiones bajos. No debe comenzar ni terminar con un carácter especial, y no debe tener más de 15 caracteres.");
+        }
+        // Revisar por caracteres consecutivos de acuerdo al enunciado
+        if (nombre.find("..") != string::npos || nombre.find("--") != string::npos || nombre.find("__") != string::npos) {
+            throw ExcepcionNombre("No debe contener dos caracteres especiales consecutivos");
+        }
     }
 
     void validarDominio(const string& dominio) {
