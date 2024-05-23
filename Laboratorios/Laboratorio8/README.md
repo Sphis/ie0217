@@ -1,4 +1,6 @@
 # Laboratorio 8
+Este laboratorio consiste en práctica comandos de SQL mediante la página https://www.sql-practice.com/, el cuál trae ejercicios por hacer que se utilizaron como preguntas de práctica.
+
 ## Integrantes
 Kevin Campos Castro
 
