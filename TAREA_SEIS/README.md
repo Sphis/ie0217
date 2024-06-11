@@ -40,8 +40,22 @@ Con esto se crean las tablas correspondientes al primer paso, como se observa en
 ### Insertar imagen 2
 ### Insertar imagen 3
 
-
 ### 2. Inserción de datos
+Para este caso se empiezan a agregar datos, para agregar datos a una tabla hay que utilizar el comando `INSERT INTO` seguido de la tabla al que se le quieren insertar los datos. Puesto que queremos ingresar datos a la tabla de `Cursos` el comando completo sería de la forma `INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES` donde después de `VALUES` se agrega los valores en el mismo orden de los atributos que están dentro del paréntesis, entonces `('IE-0579', 'Administracion de sistemas', 9, 4)` estaría agregando un curso con las siglas IE-0579 con el nombre de Administracion de sistemas, está en el semestre 9 y vale 4 créditos. El resultado de ejecutar esto se observa en la siguiente imagen:
+### Insertar imagen 4
+Se observa que los datos se guardaron de forma correcta en la figura.
+
+Las otras tablas trabajan de la misma forma, solo hay que tener en cuenta que sus atributos cambian de acuerdo a la tabla. Otro punto importante es que las otra tablas deben referenciar a Cursos, para esto se utiliza el comando 
+```
+INSERT INTO Requisitos (CursoID, RequisitoCursoID) VALUES
+((SELECT CursoID FROM Cursos WHERE Sigla = 'IE-0679'), (SELECT CursoID FROM Cursos WHERE Sigla = 'IE-0579'))
+```
+Este comando ingresa datos a la tabla de Requisitos. Primeramente realiza una busqueda de la tabla `Cursos`, seguidamente en esa tabla busca la columna `Sigla` continua buscando en esa columna la fila que contenga el valor `IE-0679`. Una vez determinado que los valores existen crea un vínculo indicando que el curso `IE-0679` tiene como requisito el curso `IE-0579`, es decir, Ciencia de datos va a tener como requisito el curso de Administración de sistemas. El resultado de ingresar los datos se muestra en la siguiente imagen:
+### Insertar imagen 5
+Se observa que las tablas se actualizaron y basado en la imagen anterior (imagen 4) se verifica que los vínculos se crearon de forma adecuada, ya que la columna de `CursoID` contiene los valores 3 y 4, que corresponden a los cursos de Ciencia de datos y Desarrollo de aplicaciones web tienen como requisito (columna de RequisitoCursoID) 1 y 2 que son Administración de sistemas y Seguridad Ocupacional, esto concuerda con el análisis realizado anteriormente.
+
+La tabla de Descripciones funciona como una combinación de los 2 casos anteriores, es decir, se realiza una busqueda la sigla del curso, se agrega valores de descripción y el nivel de dificultad. El resultado se muestra a continuación:
+### Insertar imagen 6
 
 ### 3. Consultas
 
