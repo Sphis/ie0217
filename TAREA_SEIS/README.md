@@ -1,5 +1,5 @@
 # Instrucciones
-En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a continuación. La forma en que se va a trabajar es que se van a seguir los pasos que se encuentran en el enunciado y se van a adjuntar imágenes de dicho procedimiento mostrando un antes y después de la ejecucion de los comando y una explicación breve.
+En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a continuación. La forma en que se va a trabajar es que se van a seguir los pasos que se encuentran en el enunciado y se van a adjuntar imágenes de dicho procedimiento mostrando un antes y después de la ejecucion de los comando y una explicación breve. Algunos cursos se toman del plan de licenciatura de ingeniería eléctrica, sin embargo solo se van a incluir los que sean necesarios para cumplir con lo solicitado por la tarea, ya que este proceso demora mucho tiempo.
 
 # Solución de la tarea 6
 ### 1. Creación de la base de datos y tablas
@@ -58,6 +58,13 @@ La tabla de Descripciones funciona como una combinación de los 2 casos anterior
 ### Insertar imagen 6
 
 ### 3. Consultas
+- **Consulta para listar todos los cursos con su sigla, nombre, semestre, créditos, descripción y dificultad.**
+
+- **Consultas para listar todos los requisitos de un curso espec´ıfico..**
+
+- **Consulta para listar los cursos que no son optativos.**
+
+- **Listar los cursos que pertenecen al semestre X.**
 
 ### 4. Actualizaciones
 
