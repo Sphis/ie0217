@@ -1,4 +1,18 @@
-# Instrucciones de ejecución
+# Instrucciones
+En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a continuación. La forma en que se va a trabajar es que se van a seguir los pasos que se encuentran en el enunciado y se van a adjuntar imágenes de dicho procedimiento mostrando un antes y después de la ejecucion de los comando y una explicación breve.
+
+# Solución de la tarea 6
+### 1. Creación de la base de datos y tablas
+
+### 2. Inserción de datos
+
+### 3. Consultas
+
+### 4. Actualizaciones
+
+### 5. Eliminaciones
+
+
 
 # Parte teórica
 1. ¿Qué es una base de datos relacional y cuáles son sus características fundamentales?
