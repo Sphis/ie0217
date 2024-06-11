@@ -3,6 +3,43 @@ En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a c
 
 # Solución de la tarea 6
 ### 1. Creación de la base de datos y tablas
+Basado en la siguiente figura, se observa que, se crea la base de datos mediante el comando ``CREATE DATABASE`` y se usa la palabra clave ``USE`` para indicar que esta es la base de datos a usar. Seguidamente se utiliza el comando ``CREATE TABLE IF NOT EXISTS`` y se escribe el nombre de la tabla a usar. Se usa este comando para indicar de que si la tabla ya fue creada, no volver a crear otra. Finalmente se agregan las características correspondientes a los atributos solicitados por el enunciado. Las palabras claves ``NOT NULL`` y ``UNIQUE`` se usan para no permitir valores nulos en esta columna (porque no tiene sentido que un curso no tenga nombre) y que sea único (porque no tiene sentido que el mismo curso esté 2 veces).
+
+La razón por la que en la imagen los valores salen como "NULL" es debido a que aún no se han agregado valores a la tabla, solo se ha creado.
+### Insertar imagen 1
+
+El commando ``SELECT * FROM Cursos`` es usado para mostrar la tabla de Cursos en específico, sin embargo se va a utilizar más adelante para mostrar las demás tablas.
+
+Las demás tablas siguen el formato explicado anteriormente, por lo que no se va a entrar mucho a detalle, la única consideración es utilizar las funciones correctas de acuerdo al enunciado. El código para crear las demás tablas se presenta a continuación:
+```
+-- Creacion de la tabla Requisitos
+CREATE TABLE IF NOT EXISTS Requisitos (
+    RequisitoID INT AUTO_INCREMENT PRIMARY KEY,
+    CursoID INT NOT NULL,
+    RequisitoCursoID INT NOT NULL,
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
+    FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID)
+);
+
+-- Creacion de la tabla Descripciones
+CREATE TABLE IF NOT EXISTS Descripciones (
+    DescripcionID INT AUTO_INCREMENT PRIMARY KEY,
+    CursoID INT NOT NULL,
+    Descripcion TEXT NOT NULL,
+    Dificultad ENUM('Fácil', 'Media', 'Difícil') NOT NULL,
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID)
+);
+
+-- Mostrar tablas
+SELECT * FROM Cursos;
+SELECT * FROM Requisitos;
+SELECT * FROM Descripciones;
+```
+
+Con esto se crean las tablas correspondientes al primer paso, como se observa en las siguientes imágenes:
+### Insertar imagen 2
+### Insertar imagen 3
+
 
 ### 2. Inserción de datos
 
