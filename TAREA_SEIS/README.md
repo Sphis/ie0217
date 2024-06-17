@@ -59,12 +59,22 @@ La tabla de Descripciones funciona como una combinación de los 2 casos anterior
 
 ### 3. Consultas
 - **Consulta para listar todos los cursos con su sigla, nombre, semestre, créditos, descripción y dificultad.**
+Para este punto, se debe considerar que los cursos están en la tabla de `Cursos`, pero las descripciones y dificultades están en la tabla de `Descripciones`, por lo que se requiere un comando para "unir" las tablas y así, poder cumplir con lo solicitado. Para unir 2 tablas se utiliza el comando `JOIN`, en este caso se usa la el comando `FROM Cursos` seguido de `JOIN Descripciones` me indica que voy a unir ambas tablas, lo que sigue después de `ON` indica bajo que condición quiero que se una, para `Cursos.CursoID = Descripciones.CursoID` esto sería que quiero que se una donde la columna de `CursoID` de la tabla `Cursos` coincide con la columna de `CursoID` de la tabla `Descripciones`. Finalmente `SELECT` para escoger las columnas que quiero tener en esta nueva tabla o solicitud. También es importante saber que ambos de estos datos son compartidos, es decir, tiene el mismo valor (Cursos.CursoID y Descripciones.CursoID). El resultado se muestra en la siguente imágen:
+### Insertar imagen 7
+Se observa que la consulta se realiza de forma correcta mostrando los 5 cursos que se habían agregado anteriormente a pesar de que no se ha creado esta tabla (porque es una consulta).
 
-- **Consultas para listar todos los requisitos de un curso espec´ıfico..**
+- **Consultas para listar todos los requisitos de un curso específico..**
+En este caso el flujo de lógica es como sigue, se realiza una consulta a la tabla de `Requisitos`, después se hace un `JOIN` de la tabla de `Requisitos` con la tabla de `Cursos`, en este caso la tabla de `Cursos` se le hace un aliasing (que es cambiarle el nombre para que sea más fácil de manejar, en este contexto `c1` es lo mismo que `Cursos`) llamado `c1`, entonces se tiene una tabla que enlaza `CursoID` en `Requisitos` a `CursoID` en `Cursos`, esto para obtener los detalles de los cursos. Lo mismo sucede con `c2`, lo que cambia es que se hace un enlace de `RequisitoCursoID` en `Requisitos` a `CursoID` en `Cursos` para obtener los requisitos. En la condición de `WHERE` se específica el curso que se quiere consultar. Todo esto genera el siguiente resultado:
+### Insertar imagen 8
+Lo cual, se observa que va de acuerdo con el plan de estudios (en este caso no se insertó el otro requisito, ya que sería repetir código para el otro curso).
 
 - **Consulta para listar los cursos que no son optativos.**
 
+
+
 - **Listar los cursos que pertenecen al semestre X.**
+Para esto se hace una busqueda condicional (`WHERE`) donde el valor de `Semestre` sea igual a un valor X, en este caso se toma el décimo semestre. A continuación se presenta el resultado junto con el código.
+### Insertar imagen 10
 
 ### 4. Actualizaciones
 
