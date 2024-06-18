@@ -93,8 +93,14 @@ Esto es similar al caso anterior, se tiene que actualizar valores existentes, lo
 Se observa que se actualizaron los valores de forma correcta, también se puede verificar con la quinta imagen del inciso anterior.
 
 ### 5. Eliminaciones
+**Elimina un curso inventado y 2 cursos del plan y asegúrate de que también se eliminen sus descripciones asociadas.**
+Para eliminar un dato en SQL se utiliza la palabra `DELETE` para indicar que se va a borrar seguido de `FROM` para indicar de que tabla se va a eliminar el dato. En la primera línea, se elimina la fila donde se encuentra el curso `CI-0137` de la tabla de Cursos. En el caso de la segunda línea, en la sección de código `= (SELECT CursoID FROM Cursos WHERE Sigla = 'CI-0137')`, esto es una forma de decir que estoy buscando el CursoID del curso con la sigla CI-0137, en conjunto con el resto, quiere decir que estoy borrando la fila donde se encuentra dicho dato en la tabla de `Descripciones`. En resumen uno es para eliminar el curso y el otro su descripción. La primera eliminación es para el curso inventado y las otras dos son del plan. En el caso del curso IE-0679 también hay que eliminar sus requisitos, de no ser así se generan errores. A continuación se muestra que se borraron efectivamente de la tabla de cursos y de descripciones:
+### Insertar imagen 17
+### Insertar imagen 18
 
-
+**Elimina requisitos específicos de 2 cursos existentes.**
+Este caso es similar al anterior, simplemente se busca el `CursoID` mediante las siglas del curso. Puesto que los requisitos solo se encuentran en la tabla de `Requisitos` solo hay que borrar una vez. La primera de las 2 consultas que se hacen después (con el AND) es para buscar el CursoID con las siglas IE-0117, mediante el uso del AND se obliga a que solo se va a borrar si este resultado está también en RequisitoCursoID (condición de requisito). Se observa en la siguiente imagen que efectivamente se borraron los cursos:
+### Insertar imagen 19
 
 # Parte teórica
 1. ¿Qué es una base de datos relacional y cuáles son sus características fundamentales?
