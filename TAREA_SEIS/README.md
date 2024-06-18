@@ -69,14 +69,20 @@ En este caso el flujo de lógica es como sigue, se realiza una consulta a la tab
 Lo cual, se observa que va de acuerdo con el plan de estudios (en este caso no se insertó el otro requisito, ya que sería repetir código para el otro curso).
 
 - **Consulta para listar los cursos que no son optativos.**
-
-
+Para este apartado se realizaron modificaciones, ya que no se habían agregado optativas, sin embargo no se van a explicar porque se utilizaron los mismos comandos para agregar cursos y descripciones de los incisos anteriores, las datos nuevos de las tablas se observa a continuación:
+### Insertar imagen 11
+### Insertar imagen 12
+### Insertar imagen 13
+Ya con los datos disponibles se utiliza el siguiente comando para ver listar los cursos que no son optativos.
+### Insertar imagen 14
+En este caso, se usa `C` como una alias a `Cursos` y `D` como una alias a `Descripciones` (para que no haya que escribir estas dos palabras cada vez), seguidamente se realiza una union entre las tablas de `Cursos` y `Descripciones` mediante la identificación del curso (esto para mostrar toda la información respecto a dicho curso y no solamente una de las tablas) y se realiza una búsqueda condicional usando un `WHERE`, específicamente se busca en la columna de `Descripcion` para ver si hay alguna celda que contiene la palabra clave de `Optativa`, si es así que no se incluya en el query. Se observa que ninguno de los optativas (IE-0117, IE-0217, IE-0365) aparecen en el resultado.
 
 - **Listar los cursos que pertenecen al semestre X.**
 Para esto se hace una busqueda condicional (`WHERE`) donde el valor de `Semestre` sea igual a un valor X, en este caso se toma el décimo semestre. A continuación se presenta el resultado junto con el código.
 ### Insertar imagen 10
 
 ### 4. Actualizaciones
+
 
 ### 5. Eliminaciones
 
