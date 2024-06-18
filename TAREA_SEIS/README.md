@@ -82,7 +82,15 @@ Para esto se hace una busqueda condicional (`WHERE`) donde el valor de `Semestre
 ### Insertar imagen 10
 
 ### 4. Actualizaciones
+**Actualiza el nombre y creditos de 3 de los cursos optativos**
+Para realizar esto, se hace uso del comando `UPDATE` para actualizar valores existentes y se usa `SET` para establecer el valor un valor nuevo en la columna `Nombre` y el valor de `Creditos`, esto donde (uso de `WHERE`) la sigla coincide con lo indicado que en este caso son las 3 optativas agregadas. El resultado es el siguiente:
+### Insertar imagen 15
+Se observa que se cambian los créditos y descripciones de las optativas que se tenían en la tercera imagen del inciso 3.
 
+**Actualiza la descripción y dificultad de 3 cursos existentes**
+Esto es similar al caso anterior, se tiene que actualizar valores existentes, lo único que cambia son las tablas/columnas a modificar, el resultado se muestra en la siguiente figura:
+### Insertar imagen 16
+Se observa que se actualizaron los valores de forma correcta, también se puede verificar con la quinta imagen del inciso anterior.
 
 ### 5. Eliminaciones
 
