@@ -69,13 +69,15 @@ La tabla de Descripciones funciona como una combinación de los 2 casos anterior
 
 ### 3. Consultas
 - **Consulta para listar todos los cursos con su sigla, nombre, semestre, créditos, descripción y dificultad.**
+
 Para este punto, se debe considerar que los cursos están en la tabla de `Cursos`, pero las descripciones y dificultades están en la tabla de `Descripciones`, por lo que se requiere un comando para "unir" las tablas y así, poder cumplir con lo solicitado. Para unir 2 tablas se utiliza el comando `JOIN`, en este caso se usa la el comando `FROM Cursos` seguido de `JOIN Descripciones` me indica que voy a unir ambas tablas, lo que sigue después de `ON` indica bajo que condición quiero que se una, para `Cursos.CursoID = Descripciones.CursoID` esto sería que quiero que se una donde la columna de `CursoID` de la tabla `Cursos` coincide con la columna de `CursoID` de la tabla `Descripciones`. Finalmente `SELECT` para escoger las columnas que quiero tener en esta nueva tabla o solicitud. También es importante saber que ambos de estos datos son compartidos, es decir, tiene el mismo valor (Cursos.CursoID y Descripciones.CursoID). El resultado se muestra en la siguente imágen:
 
 ![7](https://github.com/Sphis/ie0217/assets/116931494/8946eb06-1a1d-4a42-884b-c9c05bdb2edd)
 
 Se observa que la consulta se realiza de forma correcta mostrando los 5 cursos que se habían agregado anteriormente a pesar de que no se ha creado esta tabla (porque es una consulta).
 
-- **Consultas para listar todos los requisitos de un curso específico..**
+- **Consultas para listar todos los requisitos de un curso específico.**
+
 En este caso el flujo de lógica es como sigue, se realiza una consulta a la tabla de `Requisitos`, después se hace un `JOIN` de la tabla de `Requisitos` con la tabla de `Cursos`, en este caso la tabla de `Cursos` se le hace un aliasing (que es cambiarle el nombre para que sea más fácil de manejar, en este contexto `c1` es lo mismo que `Cursos`) llamado `c1`, entonces se tiene una tabla que enlaza `CursoID` en `Requisitos` a `CursoID` en `Cursos`, esto para obtener los detalles de los cursos. Lo mismo sucede con `c2`, lo que cambia es que se hace un enlace de `RequisitoCursoID` en `Requisitos` a `CursoID` en `Cursos` para obtener los requisitos. En la condición de `WHERE` se específica el curso que se quiere consultar. Todo esto genera el siguiente resultado:
 
 ![8](https://github.com/Sphis/ie0217/assets/116931494/6a859df3-b96d-47f2-8c9a-5ab32eb47501)
@@ -83,6 +85,7 @@ En este caso el flujo de lógica es como sigue, se realiza una consulta a la tab
 Lo cual, se observa que va de acuerdo con el plan de estudios (en este caso no se insertó el otro requisito, ya que sería repetir código para el otro curso).
 
 - **Consulta para listar los cursos que no son optativos.**
+
 Para este apartado se realizaron modificaciones, ya que no se habían agregado optativas, sin embargo no se van a explicar porque se utilizaron los mismos comandos para agregar cursos y descripciones de los incisos anteriores, las datos nuevos de las tablas se observa a continuación:
 
 ![11](https://github.com/Sphis/ie0217/assets/116931494/b218f2f4-3e61-4934-9e98-5f36a08d4909)
@@ -98,12 +101,14 @@ Ya con los datos disponibles se utiliza el siguiente comando para ver listar los
 En este caso, se usa `C` como una alias a `Cursos` y `D` como una alias a `Descripciones` (para que no haya que escribir estas dos palabras cada vez), seguidamente se realiza una union entre las tablas de `Cursos` y `Descripciones` mediante la identificación del curso (esto para mostrar toda la información respecto a dicho curso y no solamente una de las tablas) y se realiza una búsqueda condicional usando un `WHERE`, específicamente se busca en la columna de `Descripcion` para ver si hay alguna celda que contiene la palabra clave de `Optativa`, si es así que no se incluya en el query. Se observa que ninguno de los optativas (IE-0117, IE-0217, IE-0365) aparecen en el resultado.
 
 - **Listar los cursos que pertenecen al semestre X.**
+
 Para esto se hace una busqueda condicional (`WHERE`) donde el valor de `Semestre` sea igual a un valor X, en este caso se toma el décimo semestre. A continuación se presenta el resultado junto con el código.
 
 ![10](https://github.com/Sphis/ie0217/assets/116931494/955c8a60-2043-4238-aa67-ce2a54199de5)
 
 ### 4. Actualizaciones
 **Actualiza el nombre y creditos de 3 de los cursos optativos**
+
 Para realizar esto, se hace uso del comando `UPDATE` para actualizar valores existentes y se usa `SET` para establecer el valor un valor nuevo en la columna `Nombre` y el valor de `Creditos`, esto donde (uso de `WHERE`) la sigla coincide con lo indicado que en este caso son las 3 optativas agregadas. El resultado es el siguiente:
 
 ![15](https://github.com/Sphis/ie0217/assets/116931494/2234557b-eb93-4575-aca5-1a346f11de05)
@@ -111,6 +116,7 @@ Para realizar esto, se hace uso del comando `UPDATE` para actualizar valores exi
 Se observa que se cambian los créditos y descripciones de las optativas que se tenían en la tercera imagen del inciso 3.
 
 **Actualiza la descripción y dificultad de 3 cursos existentes**
+
 Esto es similar al caso anterior, se tiene que actualizar valores existentes, lo único que cambia son las tablas/columnas a modificar, el resultado se muestra en la siguiente figura:
 
 ![16](https://github.com/Sphis/ie0217/assets/116931494/370b27e3-4792-4897-9e11-c36cc667d41a)
@@ -119,6 +125,7 @@ Se observa que se actualizaron los valores de forma correcta, también se puede 
 
 ### 5. Eliminaciones
 **Elimina un curso inventado y 2 cursos del plan y asegúrate de que también se eliminen sus descripciones asociadas.**
+
 Para eliminar un dato en SQL se utiliza la palabra `DELETE` para indicar que se va a borrar seguido de `FROM` para indicar de que tabla se va a eliminar el dato. En la primera línea, se elimina la fila donde se encuentra el curso `CI-0137` de la tabla de Cursos. En el caso de la segunda línea, en la sección de código `= (SELECT CursoID FROM Cursos WHERE Sigla = 'CI-0137')`, esto es una forma de decir que estoy buscando el CursoID del curso con la sigla CI-0137, en conjunto con el resto, quiere decir que estoy borrando la fila donde se encuentra dicho dato en la tabla de `Descripciones`. En resumen uno es para eliminar el curso y el otro su descripción. La primera eliminación es para el curso inventado y las otras dos son del plan. En el caso del curso IE-0679 también hay que eliminar sus requisitos, de no ser así se generan errores. A continuación se muestra que se borraron efectivamente de la tabla de cursos y de descripciones:
 
 ![17](https://github.com/Sphis/ie0217/assets/116931494/b3fd1ea7-2164-469d-a11d-4aaf4b6ddfd3)
@@ -126,6 +133,7 @@ Para eliminar un dato en SQL se utiliza la palabra `DELETE` para indicar que se 
 ![18](https://github.com/Sphis/ie0217/assets/116931494/26b64199-f2ed-4b83-98d6-95a1df0e772b)
 
 **Elimina requisitos específicos de 2 cursos existentes.**
+
 Este caso es similar al anterior, simplemente se busca el `CursoID` mediante las siglas del curso. Puesto que los requisitos solo se encuentran en la tabla de `Requisitos` solo hay que borrar una vez. La primera de las 2 consultas que se hacen después (con el AND) es para buscar el CursoID con las siglas IE-0117, mediante el uso del AND se obliga a que solo se va a borrar si este resultado está también en RequisitoCursoID (condición de requisito). Se observa en la siguiente imagen que efectivamente se borraron los cursos:
 
 ![19](https://github.com/Sphis/ie0217/assets/116931494/6185cedc-9e93-473f-9444-2edf11532a3d)
