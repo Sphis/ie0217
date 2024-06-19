@@ -1,5 +1,5 @@
 # Instrucciones
-En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a continuación. La forma en que se va a trabajar es que se van a seguir los pasos que se encuentran en el enunciado y se van a adjuntar imágenes de dicho procedimiento mostrando un antes y después de la ejecucion de los comando y una explicación breve. Algunos cursos se toman del plan de licenciatura de ingeniería eléctrica, sin embargo solo se van a incluir los que sean necesarios para cumplir con lo solicitado por la tarea, ya que este proceso demora mucho tiempo.
+En esta tarea se utiliza MySQL, el resultado de dicha tarea se va a adjuntar a continuación. La forma en que se va a trabajar es que se van a seguir los pasos que se encuentran en el enunciado y se van a adjuntar imágenes de dicho procedimiento mostrando un antes y después de la ejecucion de los comando y una explicación breve. Algunos cursos se toman del plan de licenciatura de ingeniería eléctrica, sin embargo solo se van a incluir los que sean necesarios para cumplir con lo solicitado por la tarea, ya que este proceso demora mucho tiempo (es decir, solo se incluyen lo escencial y no todo el plan).
 
 # Solución de la tarea 6
 ### 1. Creación de la base de datos y tablas
